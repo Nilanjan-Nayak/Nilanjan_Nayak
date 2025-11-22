@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { 
-  Mail, MapPin, Phone, Send, CheckCircle2, AlertCircle,
+  Mail, MapPin, Phone, Send, CheckCircle2,
   Linkedin, Github, Twitter, Globe, Clock, MessageSquare,
   Sparkles, ArrowUpRight, Calendar
 } from 'lucide-react';

@@ -1,12 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
-import { ChevronDown, Github, Linkedin, Mail, ArrowUpRight, FileDown, Calendar, MapPin, Terminal, Briefcase } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Mail, ArrowUpRight, FileDown, Calendar, MapPin, Terminal } from 'lucide-react';
 
 export default function Hero() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [activeProject, setActiveProject] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
-  
+
   const featuredProjects = [
     { name: "E-Commerce Platform", tech: "React + Node.js", year: "2025", image: "IMG-20251021-WA0067.jpg" },
     { name: "Analytics Dashboard", tech: "Next.js + TypeScript", year: "2024", image: "image.svg" },
@@ -40,21 +40,21 @@ export default function Hero() {
   }, []);
 
   return (
-    <section 
+    <section
       ref={heroRef}
       id="hero"
       className="relative min-h-screen bg-[#02000d] text-slate-50 overflow-hidden"
     >
       {/* Premium Dark Blue Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(19,28,128,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(19,28,128,0.05)_1px,transparent_1px)] bg-[size:80px_80px]" />
-      
+
       {/* Elegant Blue Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#050939] via-[#02000d] to-[#07203f] opacity-90" />
-      
+
       {/* Premium Blue Accent Line */}
-      <div 
+      <div
         className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-transparent via-[#5AA8D6] to-transparent"
-        style={{ 
+        style={{
           opacity: 0.3 + scrollProgress * 0.4,
           transform: `scaleY(${0.3 + scrollProgress * 0.7})`,
           boxShadow: '0 0 20px rgba(90, 168, 214, 0.5)'
@@ -65,93 +65,119 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#131c80] rounded-full blur-[120px] opacity-20" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#3066be] rounded-full blur-[120px] opacity-15" />
 
-      
+
 
       {/* Main Content */}
-      <div className="relative min-h-screen flex items-center pt-16 sm:pt-20">
-        <div className="container mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-          <div className="grid lg:grid-cols-[1.2fr,1fr] gap-8 sm:gap-10 lg:gap-16 xl:gap-20 items-center">
-            
+      <div className="relative min-h-screen flex items-center pt-12 sm:pt-16">
+        <div className="container mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+          <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center">
+
             {/* Left Side - Typography Focus */}
-            <div className="space-y-6 sm:space-y-8 lg:space-y-10 order-2 lg:order-1 relative z-10">
+            <div className="space-y-5 sm:space-y-6 lg:space-y-8 order-2 lg:order-1 relative z-10">
               {/* Premium Metadata */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6 text-[10px] sm:text-xs text-slate-400 font-mono uppercase tracking-wider">
-                <div className="flex items-center gap-1.5">
-                  <MapPin size={10} className="sm:w-3 sm:h-3 text-[#5AA8D6]" />
-                  <span>India</span>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#131c80]/20 border border-[#3066be]/20 rounded-full backdrop-blur-sm">
+                  <MapPin size={10} className="text-[#5AA8D6]" />
+                  <span className="text-[9px] sm:text-[10px] text-slate-300 font-medium tracking-wide">India</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Calendar size={10} className="sm:w-3 sm:h-3 text-[#5AA8D6]" />
-                  <span>{currentTime.toLocaleDateString('en-US', { year: 'numeric' })}</span>
+                <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#131c80]/20 border border-[#3066be]/20 rounded-full backdrop-blur-sm">
+                  <Calendar size={10} className="text-[#5AA8D6]" />
+                  <span className="text-[9px] sm:text-[10px] text-slate-300 font-medium tracking-wide">{currentTime.toLocaleDateString('en-US', { year: 'numeric' })}</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Terminal size={10} className="sm:w-3 sm:h-3 text-[#5AA8D6]" />
-                  <span className="hidden xs:inline">Full-Stack Dev</span>
-                  <span className="xs:hidden">Dev</span>
+                <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#131c80]/20 border border-[#3066be]/20 rounded-full backdrop-blur-sm">
+                  <Terminal size={10} className="text-[#5AA8D6]" />
+                  <span className="text-[9px] sm:text-[10px] text-slate-300 font-medium tracking-wide hidden xs:inline">Full-Stack Developer</span>
+                  <span className="text-[9px] sm:text-[10px] text-slate-300 font-medium tracking-wide xs:hidden">Developer</span>
                 </div>
               </div>
 
-              {/* Premium Typography with Blue Gradient */}
-              <div className="space-y-3 sm:space-y-4 lg:space-y-6">
-                <h1 className="text-[clamp(2.5rem,8vw,6rem)] lg:text-[clamp(3rem,6vw,9rem)] font-black leading-[0.9] tracking-tighter text-slate-50">
-                  NILANJAN
-                  <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5AA8D6] via-[#3066be] to-[#00bfff]">
-                    NAYAK
-                  </span>
-                </h1>
-                
-                <div className="h-px w-16 sm:w-20 lg:w-24 bg-gradient-to-r from-[#5AA8D6] via-[#3066be] to-transparent shadow-[0_0_10px_rgba(90,168,214,0.5)]" />
-              </div>
+              {/* Premium Typography with Animated Gradient */}
+              <div className="space-y-4 sm:space-y-5 lg:space-y-6">
+                <div className="space-y-3">
+                  <h1 className="text-[clamp(2.25rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,6rem)] font-black leading-[0.9] tracking-[-0.03em]">
+                    <span className="inline-block text-slate-50 animate-fade-in">NILANJAN</span>
+                    <br />
+                    <span className="inline-block relative">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5AA8D6] via-[#3066be] to-[#00bfff] animate-gradient-x drop-shadow-[0_0_30px_rgba(90,168,214,0.4)]">
+                        NAYAK
+                      </span>
+                      {/* Animated underline */}
+                      <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#5AA8D6] via-[#3066be] to-[#00bfff] rounded-full opacity-60 animate-width" />
+                    </span>
+                  </h1>
 
-              {/* Premium Subtitle */}
-              <div className="space-y-2 sm:space-y-2.5 max-w-2xl">
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-light text-slate-200 leading-relaxed">
-                  Crafting digital products with precision, elegance, and purpose.
-                </p>
+                  <div className="flex items-center gap-3">
+                    <div className="h-[2px] w-16 sm:w-20 lg:w-24 bg-gradient-to-r from-[#5AA8D6] via-[#3066be] to-transparent shadow-[0_0_15px_rgba(90,168,214,0.6)] animate-pulse-glow" />
+                    <div className="h-[2px] w-8 sm:w-10 bg-gradient-to-r from-[#3066be] to-transparent opacity-50" />
+                    <div className="h-[2px] w-4 bg-gradient-to-r from-[#3066be] to-transparent opacity-30" />
+                  </div>
+                </div>
+
+                {/* Premium Subtitle */}
+                <div className="space-y-2.5 max-w-lg">
+                  <p className="text-base sm:text-lg md:text-xl font-light text-slate-200 leading-relaxed animate-fade-in-up">
+                    Crafting digital products with <span className="text-[#5AA8D6] font-medium">precision</span>, <span className="text-[#5AA8D6] font-medium">elegance</span>, and <span className="text-[#5AA8D6] font-medium">purpose</span>.
+                  </p>
+                  <p className="text-sm sm:text-base text-slate-400 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                    Transforming ideas into exceptional digital experiences.
+                  </p>
+                </div>
               </div>
 
               {/* Premium Stats Grid */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 pt-2 sm:pt-3">
-                <div className="group text-center lg:text-left">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-br from-[#5AA8D6] to-[#3066be] bg-clip-text text-transparent mb-0.5 group-hover:scale-105 transition-transform duration-300">5+</div>
-                  <div className="text-[9px] sm:text-xs text-slate-400 uppercase tracking-widest font-medium">Years</div>
+              <div className="grid grid-cols-3 gap-4 sm:gap-5 lg:gap-6 pt-2 sm:pt-3">
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#3066be]/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative text-center lg:text-left space-y-0.5">
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-br from-[#5AA8D6] to-[#3066be] bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">5+</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-[0.12em] font-semibold">Years Exp.</div>
                   </div>
-                <div className="group text-center">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-br from-[#5AA8D6] to-[#3066be] bg-clip-text text-transparent mb-0.5 group-hover:scale-105 transition-transform duration-300">50+</div>
-                  <div className="text-[9px] sm:text-xs text-slate-400 uppercase tracking-widest font-medium">Projects</div>
                 </div>
-                <div className="group text-center lg:text-right">
-                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-br from-[#5AA8D6] to-[#3066be] bg-clip-text text-transparent mb-0.5 group-hover:scale-105 transition-transform duration-300">15+</div>
-                  <div className="text-[9px] sm:text-xs text-slate-400 uppercase tracking-widest font-medium">Clients</div>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#3066be]/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative text-center space-y-0.5">
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-br from-[#5AA8D6] to-[#3066be] bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">50+</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-[0.12em] font-semibold">Projects</div>
+                  </div>
+                </div>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#3066be]/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative text-center lg:text-right space-y-0.5">
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-br from-[#5AA8D6] to-[#3066be] bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">15+</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-[0.12em] font-semibold">Clients</div>
+                  </div>
                 </div>
               </div>
 
-              {/* ✅ FIXED: Better button layout */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
+              {/* Enhanced CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-4 sm:pt-5">
                 <button
                   onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative w-full sm:w-auto px-6 sm:px-7 lg:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-[#3066be] to-[#5AA8D6] hover:from-[#5AA8D6] hover:to-[#00bfff] text-white font-semibold text-sm sm:text-base text-center overflow-hidden transition-all duration-300 rounded shadow-[0_0_20px_rgba(90,168,214,0.2)] hover:shadow-[0_0_30px_rgba(90,168,214,0.4)] flex items-center justify-center gap-2"
+                  className="group relative w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#3066be] to-[#5AA8D6] hover:from-[#5AA8D6] hover:to-[#00bfff] text-white font-bold text-sm overflow-hidden transition-all duration-300 rounded-lg shadow-[0_0_20px_rgba(90,168,214,0.3)] hover:shadow-[0_0_30px_rgba(90,168,214,0.5)] hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <span className="relative z-10">View Projects</span>
-                  <ArrowUpRight 
-                    className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" 
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                  <span className="relative flex items-center justify-center gap-2">
+                    View Projects
+                    <ArrowUpRight
+                      className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    />
+                  </span>
                 </button>
 
                 <a
                   href="/resume.pdf"
                   download="Nilanjan_Resume.pdf"
-                  className="group w-full sm:w-auto px-6 sm:px-7 lg:px-8 py-3 sm:py-3.5 border border-[#3066be]/70 hover:border-[#5AA8D6] bg-[#050939]/50 hover:bg-[#131c80]/70 backdrop-blur text-slate-100 font-semibold text-sm sm:text-base text-center transition-all duration-300 flex items-center justify-center gap-2 rounded hover:shadow-[0_0_20px_rgba(90,168,214,0.15)]"
+                  className="group w-full sm:w-auto px-6 py-3 border-2 border-[#3066be]/50 hover:border-[#5AA8D6] bg-[#050939]/30 hover:bg-[#131c80]/50 backdrop-blur-sm text-slate-100 font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 rounded-lg hover:shadow-[0_0_20px_rgba(90,168,214,0.2)] hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <FileDown className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>Resume</span>
+                  <FileDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+                  <span>Download Resume</span>
                 </a>
               </div>
 
               {/* Premium Social Links */}
-              <div className="flex items-center gap-0.5 sm:gap-1 pt-2 sm:pt-4">
-                <span className="text-[10px] sm:text-xs text-slate-500 mr-3 sm:mr-4 uppercase tracking-wider">Connect</span>
+              <div className="flex items-center gap-1.5 pt-3">
+                <span className="text-[10px] text-slate-500 mr-1.5 uppercase tracking-[0.12em] font-semibold">Connect</span>
+                <div className="h-px w-6 bg-gradient-to-r from-[#3066be]/50 to-transparent" />
                 {[
                   { icon: Github, href: "https://github.com", label: "GitHub" },
                   { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
@@ -164,95 +190,157 @@ export default function Hero() {
                       href={social.href}
                       target={social.href.startsWith('http') ? '_blank' : undefined}
                       rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="group p-2 sm:p-3 text-slate-400 hover:text-[#5AA8D6] transition-all duration-300 hover:scale-110"
+                      className="group p-2 text-slate-400 hover:text-[#5AA8D6] transition-all duration-300 hover:scale-110 hover:bg-[#131c80]/30 rounded-lg"
                       aria-label={social.label}
                     >
-                      <Icon size={18} className="sm:w-5 sm:h-5 group-hover:drop-shadow-[0_0_8px_rgba(90,168,214,0.8)]" />
+                      <Icon size={16} className="group-hover:drop-shadow-[0_0_8px_rgba(90,168,214,0.8)]" />
                     </a>
                   );
                 })}
               </div>
             </div>
 
-            {/* Right Side - Premium Visual Element */}
-            <div className="relative order-1 lg:order-2 w-full max-w-sm lg:max-w-md mx-auto lg:mx-0">
-              {/* Premium Featured Project Carousel */}
-              <div className="relative aspect-[3/4] sm:aspect-[3.5/4.5] lg:aspect-[3/4] bg-gradient-to-br from-[#07203f] to-[#050939] border border-[#131c80]/60 rounded-lg overflow-hidden shadow-[0_0_40px_rgba(19,28,128,0.3)]">
-                {/* Featured Project Image Background */}
-                <div className="absolute inset-0 w-full h-full overflow-hidden">
-                  <img
-                    src={`/src/image/${featuredProjects[activeProject].image}`}
-                    alt="Featured project showcase"
-                    key={activeProject}
-                    className="w-full h-full object-cover animate-slideIn"
-                  />
-                </div>
+            {/* Right Side - Code Editor Style Project Showcase */}
+            <div className="relative order-1 lg:order-2 w-full max-w-xs lg:max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+              {/* Code Editor Window */}
+              <div className="relative aspect-[3/4] bg-[#0a0e1a] border-2 border-[#1a1f35] rounded-lg overflow-hidden shadow-[0_0_40px_rgba(19,28,128,0.4)] hover:shadow-[0_0_60px_rgba(90,168,214,0.3)] transition-all duration-500">
 
-                {/* Premium Background Number with Blue Glow */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-5">
-                  <div className="text-[12rem] sm:text-[15rem] lg:text-[18rem] xl:text-[20rem] font-black bg-gradient-to-br from-[#5AA8D6] to-[#3066be] bg-clip-text text-transparent">
-                    {(activeProject + 1).toString().padStart(2, '0')}
+                {/* Terminal Header Bar */}
+                <div className="relative bg-gradient-to-r from-[#0d1117] to-[#161b22] border-b border-[#1a1f35] px-3 py-2 flex items-center justify-between">
+                  {/* Window Controls */}
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] hover:bg-[#ff5f56]/80 transition-colors" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] hover:bg-[#ffbd2e]/80 transition-colors" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f] hover:bg-[#27c93f]/80 transition-colors" />
+                  </div>
+
+                  {/* File Tab */}
+                  <div className="flex items-center gap-1.5 px-2 py-1 bg-[#0a0e1a] border border-[#1a1f35] rounded text-[9px] font-mono text-slate-400">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#5AA8D6]" />
+                    <span>project.tsx</span>
+                  </div>
+
+                  {/* Status Indicator */}
+                  <div className="flex items-center gap-1">
+                    <div className="w-1 h-1 rounded-full bg-[#27c93f] animate-pulse" />
                   </div>
                 </div>
 
-                {/* Elegant Blue Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#02000d] via-transparent to-transparent opacity-60" />
-
-                {/* Content */}
-                <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12">
-                  {/* Top Section */}
-                  <div>
-                    <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 bg-[#131c80]/30 backdrop-blur-sm border border-[#3066be]/30 text-[10px] sm:text-xs font-mono text-[#5AA8D6]">
-                      <Briefcase size={10} className="sm:w-3 sm:h-3" />
-                      <span>Featured Work</span>
-                    </div>
+                {/* Code Editor Content Area */}
+                <div className="relative h-[calc(100%-2.5rem)]">
+                  {/* Project Image Background with Code Overlay */}
+                  <div className="absolute inset-0 w-full h-full overflow-hidden">
+                    <img
+                      src={`/src/image/${featuredProjects[activeProject].image}`}
+                      alt="Featured project showcase"
+                      key={activeProject}
+                      className="w-full h-full object-cover opacity-30 animate-slideIn"
+                    />
+                    {/* Code Grid Overlay */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(90,168,214,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(90,168,214,0.02)_1px,transparent_1px)] bg-[size:20px_20px]" />
                   </div>
 
-                  {/* Middle - Project Info */}
-                  <div className="space-y-4 sm:space-y-6">
-                    <div className="space-y-1.5 sm:space-y-2">
-                      <div className="text-xs sm:text-sm font-mono text-[#5AA8D6]">
-                        {featuredProjects[activeProject].year}
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e1a] via-[#0a0e1a]/60 to-transparent" />
+
+                  {/* Code Content */}
+                  <div className="relative h-full flex flex-col justify-between p-4">
+                    {/* Line Numbers & Code Preview */}
+                    <div className="space-y-1 font-mono text-[9px] leading-relaxed">
+                      <div className="flex items-start gap-2 opacity-40">
+                        <span className="text-slate-600 select-none">01</span>
+                        <span className="text-slate-500">{'// Featured Project'}</span>
                       </div>
-                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-slate-100 leading-snug">
-                        {featuredProjects[activeProject].name}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-300 font-mono">
-                        {featuredProjects[activeProject].tech}
-                      </p>
+                      <div className="flex items-start gap-2 opacity-50">
+                        <span className="text-slate-600 select-none">02</span>
+                        <span className="text-slate-400">
+                          <span className="text-[#ff7b72]">const</span>{' '}
+                          <span className="text-[#79c0ff]">project</span>{' '}
+                          <span className="text-slate-400">=</span>{' '}
+                          <span className="text-[#a5d6ff]">{'{'}</span>
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2 opacity-50">
+                        <span className="text-slate-600 select-none">03</span>
+                        <span className="text-slate-400 pl-3">
+                          <span className="text-[#79c0ff]">name:</span>{' '}
+                          <span className="text-[#a5d6ff]">"{featuredProjects[activeProject].name}"</span>
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2 opacity-50">
+                        <span className="text-slate-600 select-none">04</span>
+                        <span className="text-slate-400 pl-3">
+                          <span className="text-[#79c0ff]">tech:</span>{' '}
+                          <span className="text-[#a5d6ff]">"{featuredProjects[activeProject].tech}"</span>
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2 opacity-40">
+                        <span className="text-slate-600 select-none">05</span>
+                        <span className="text-[#a5d6ff]">{'}'}</span>
+                      </div>
                     </div>
 
-                    <button className="group inline-flex items-center gap-2 text-xs sm:text-sm text-[#5AA8D6] hover:text-[#00bfff] hover:gap-3 transition-all">
-                      <span>View Case Study</span>
-                      <ArrowUpRight size={14} className="sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </button>
-                  </div>
+                    {/* Project Info Card */}
+                    <div className="space-y-3">
+                      <div className="bg-[#0d1117]/90 backdrop-blur-md border border-[#1a1f35] rounded-lg p-3 space-y-2">
+                        {/* Year Badge */}
+                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-[#1a1f35] border border-[#3066be]/30 rounded text-[9px] font-mono text-[#5AA8D6]">
+                          <Terminal size={10} />
+                          <span>{featuredProjects[activeProject].year}</span>
+                        </div>
 
-                  {/* Bottom - Premium Indicators */}
-                  <div className="flex gap-1.5 sm:gap-2">
-                    {featuredProjects.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setActiveProject(index)}
-                        className={`h-0.5 sm:h-1 transition-all duration-300 ${
-                          index === activeProject 
-                            ? 'w-10 sm:w-12 bg-gradient-to-r from-[#3066be] to-[#5AA8D6] shadow-[0_0_10px_rgba(90,168,214,0.8)]' 
-                            : 'w-5 sm:w-6 bg-[#131c80] hover:bg-[#3066be]'
-                        }`}
-                        aria-label={`View project ${index + 1}`}
-                      />
-                    ))}
+                        {/* Project Title */}
+                        <h3 className="text-sm font-bold text-slate-50 leading-tight">
+                          {featuredProjects[activeProject].name}
+                        </h3>
+
+                        {/* Tech Stack */}
+                        <div className="flex items-center gap-1.5 text-[9px] font-mono text-slate-400">
+                          <span className="text-[#5AA8D6]">$</span>
+                          <span>{featuredProjects[activeProject].tech}</span>
+                        </div>
+
+                        {/* Action Button */}
+                        <button className="group w-full flex items-center justify-between px-2.5 py-1.5 bg-[#1a1f35] hover:bg-[#3066be]/20 border border-[#3066be]/30 hover:border-[#5AA8D6]/60 rounded text-[10px] font-semibold text-[#5AA8D6] hover:text-[#00bfff] transition-all duration-300">
+                          <span className="flex items-center gap-1.5">
+                            <span className="text-slate-600">&gt;</span>
+                            <span>View Project</span>
+                          </span>
+                          <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </button>
+                      </div>
+
+                      {/* Project Indicators */}
+                      <div className="flex items-center justify-between px-1">
+                        <div className="flex gap-1.5">
+                          {featuredProjects.map((_, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setActiveProject(index)}
+                              className={`h-0.5 rounded-full transition-all duration-500 ${index === activeProject
+                                ? 'w-8 bg-gradient-to-r from-[#3066be] to-[#5AA8D6] shadow-[0_0_10px_rgba(90,168,214,0.8)]'
+                                : 'w-4 bg-[#1a1f35] hover:bg-[#3066be]/60'
+                                }`}
+                              aria-label={`View project ${index + 1}`}
+                            />
+                          ))}
+                        </div>
+
+                        {/* Project Counter */}
+                        <div className="text-[9px] font-mono text-slate-600">
+                          {(activeProject + 1).toString().padStart(2, '0')}/{featuredProjects.length.toString().padStart(2, '0')}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Subtle Decorative Corners */}
-                {/* Premium Decorative Corners with Blue Glow */}
-                <div className="absolute top-0 right-0 w-20 sm:w-24 lg:w-32 h-20 sm:h-24 lg:h-32 border-t-2 border-r-2 border-[#3066be]/50 shadow-[0_0_20px_rgba(48,102,190,0.3)]" />
-                <div className="absolute bottom-0 left-0 w-20 sm:w-24 lg:w-32 h-20 sm:h-24 lg:h-32 border-b-2 border-l-2 border-[#3066be]/50 shadow-[0_0_20px_rgba(48,102,190,0.3)]" />
-              
+                {/* Corner Brackets - Code Style */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#3066be]/40" />
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#3066be]/40" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#3066be]/40" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#3066be]/40" />
               </div>
-
-              
             </div>
           </div>
         </div>
