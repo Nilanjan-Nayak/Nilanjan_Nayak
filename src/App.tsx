@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
+import DreamProject from './components/DreamProject';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
@@ -78,6 +79,7 @@ function App() {
 
             {/* These sections will be transparent to show the fixed background */}
             <About />
+            <DreamProject />
             <Projects />
             <Skills />
             <Contact />

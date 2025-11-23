@@ -13,12 +13,18 @@ export default function About() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="max-w-4xl mx-auto text-center mb-16 lg:mb-24">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight">
+          <p className="text-sm font-medium tracking-widest uppercase text-blue-400 mb-4">
+            Get To Know Me
+          </p>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5AA8D6] to-[#3066be]">
               About Me
             </span>
           </h2>
-
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            A passionate software engineer with a knack for building robust and scalable applications.
+            Explore my journey, skills, and what drives me to create.
+          </p>
         </div>
 
 
@@ -276,92 +282,109 @@ export default function About() {
 
           {/* Right Column - Science Fairs & Certifications */}
           <div className="lg:col-span-5 space-y-8 lg:space-y-12">
-            {/* Science Fairs & Achievements */}
-            <div className="space-y-6">
-              {/* Section Header */}
-              <div className="flex items-center gap-3 pb-4 border-b border-[#1a1f35]">
-                <span className="w-6 sm:w-8 h-1 bg-gradient-to-r from-[#3066be] to-[#131c80] rounded-full" />
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">Science Fairs & Achievements</h3>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-0.5">Competition Awards & Recognition</p>
+            {/* Science Fairs & Achievements - Trophy Case Design */}
+            <div className="relative">
+              {/* Section Header with Tech Decoration */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-[#5AA8D6] blur-sm opacity-50 animate-pulse" />
+                    <div className="relative w-8 h-8 bg-[#0a0e1a] border border-[#5AA8D6] rounded-lg flex items-center justify-center">
+                      <span className="text-lg">🏆</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white tracking-tight">Achievements</h3>
+                    <p className="text-xs text-[#5AA8D6] font-mono uppercase tracking-wider">Hall of Fame</p>
+                  </div>
+                </div>
+                <div className="flex gap-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#3066be] animate-pulse" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#5AA8D6] animate-pulse delay-75" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#00bfff] animate-pulse delay-150" />
                 </div>
               </div>
 
-              {/* Achievement Cards Grid */}
-              <div className="space-y-5">
+              {/* Achievements Grid */}
+              <div className="grid gap-4">
                 {aboutData.scienceFairs.map((fair, index) => (
                   <div
                     key={index}
-                    className="group relative bg-[#0a0e1a]/60 backdrop-blur-sm border border-[#1a1f35] rounded-xl overflow-hidden hover:border-[#5AA8D6]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#5AA8D6]/10"
+                    className="group relative bg-gradient-to-br from-[#0a0e1a] to-[#050939] border border-[#1a1f35] rounded-xl overflow-hidden hover:border-[#5AA8D6]/50 transition-all duration-500 hover:shadow-[0_0_20px_rgba(90,168,214,0.15)] hover:-translate-y-1"
                   >
-                    {/* Top Accent Bar */}
-                    <div className={`h-1 bg-gradient-to-r ${fair.gradient}`} />
+                    {/* Hover Gradient Overlay */}
+                    <div className={`absolute inset-0 bg-gradient-to-r ${fair.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
 
-                    <div className="p-5 sm:p-6">
-                      {/* Header Row */}
-                      <div className="flex items-start justify-between gap-4 mb-4">
-                        {/* Left: Icon + Title */}
-                        <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
-                          <div className="flex-shrink-0 text-3xl sm:text-4xl">{fair.icon}</div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="text-base sm:text-lg font-bold text-white mb-1 group-hover:text-[#5AA8D6] transition-colors">
-                              {fair.name}
-                            </h4>
-                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
-                              <div className="flex items-center gap-1.5">
-                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                                <span>{fair.date}</span>
-                              </div>
-                              <span className="text-slate-700">•</span>
-                              <div className="flex items-center gap-1.5">
-                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                                </svg>
-                                <span className="text-[#5AA8D6]">{fair.category}</span>
-                              </div>
-                            </div>
-                          </div>
+                    {/* Animated Border Line */}
+                    <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#5AA8D6] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+                    <div className="relative p-5 flex gap-4">
+                      {/* Medal/Icon Container */}
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 rounded-xl bg-[#131c80]/30 border border-[#3066be]/30 flex items-center justify-center text-2xl shadow-inner group-hover:scale-110 transition-transform duration-300">
+                          {fair.icon}
                         </div>
-
-                        
                       </div>
 
-                      {/* Description */}
-                      <div className="mb-4">
-                        <p className="text-sm text-slate-400 leading-relaxed">
+                      {/* Content */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2 mb-1">
+                          <h4 className="text-base font-bold text-white group-hover:text-[#5AA8D6] transition-colors truncate pr-2">
+                            {fair.name}
+                          </h4>
+                          <span className="text-[10px] font-mono text-slate-500 bg-[#1a1f35] px-1.5 py-0.5 rounded border border-white/5 whitespace-nowrap">
+                            {fair.date}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full bg-gradient-to-r ${fair.gradient} text-white shadow-sm`}>
+                            {fair.achievement}
+                          </span>
+                          <span className="text-[10px] text-slate-400 font-mono border-l border-white/10 pl-2">
+                            {fair.category}
+                          </span>
+                        </div>
+
+                        <p className="text-xs text-slate-400 leading-relaxed line-clamp-2 mb-3 group-hover:text-slate-300 transition-colors">
                           {fair.description}
                         </p>
-                      </div>
 
-                      {/* Footer: Certificate Link */}
-                      <div className="flex items-center justify-between pt-4 border-t border-[#1a1f35]">
-                        <div className="flex items-center gap-2 text-xs text-slate-600">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                          </svg>
-                          <span>Certified Achievement</span>
-                        </div>
-
+                        {/* Action Link */}
                         <a
                           href={fair.certificate}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group/link inline-flex items-center gap-2 px-3 py-1.5 bg-[#1a1f35] hover:bg-[#3066be]/20 border border-[#3066be]/30 hover:border-[#5AA8D6]/50 rounded-lg transition-all duration-300"
+                          className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#5AA8D6] hover:text-white transition-colors group/link"
                         >
-                          <svg className="w-4 h-4 text-slate-400 group-hover/link:text-[#5AA8D6] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          <span className="text-xs font-semibold text-slate-400 group-hover/link:text-[#5AA8D6] transition-colors">
-                            View Certificate
-                          </span>
-                          <svg className="w-3.5 h-3.5 text-slate-400 group-hover/link:text-[#5AA8D6] transform group-hover/link:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
+                          <span>VIEW CERTIFICATE</span>
+                          <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                         </a>
                       </div>
                     </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications - Compact Tech Style */}
+            <div className="relative pt-6 border-t border-[#1a1f35]">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-1 h-4 bg-[#5AA8D6] rounded-full" />
+                <h3 className="text-sm font-bold text-white uppercase tracking-widest">Certified Competence</h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {aboutData.certifications.map((cert, index) => (
+                  <div key={index} className="group relative bg-[#0a0e1a] border border-[#1a1f35] p-3 rounded-lg hover:border-[#3066be]/50 transition-colors">
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="p-1.5 bg-[#131c80]/20 rounded text-[#5AA8D6]">
+                        <Download size={14} />
+                      </div>
+                      <span className="text-[9px] font-mono text-slate-500">{cert.year}</span>
+                    </div>
+                    <h4 className="text-xs font-bold text-slate-200 group-hover:text-white mb-1 line-clamp-1" title={cert.name}>
+                      {cert.name}
+                    </h4>
+                    <p className="text-[10px] text-slate-500">{cert.issuer}</p>
                   </div>
                 ))}
               </div>

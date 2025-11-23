@@ -4,29 +4,16 @@
 import {
     Github,
     Linkedin,
-    Twitter,
     Mail,
-    Code2,
-    Terminal,
-    Cpu,
     Globe,
     Database,
     Layout,
     Server,
-    Smartphone,
-    Figma,
-    GitBranch,
     Cloud,
-    Box,
-    Layers,
-    Monitor,
-    Award,
-    BookOpen,
-    Briefcase,
-    User,
-    Send
 } from 'lucide-react';
 
+import profileImg from '../image/IMG-20251021-WA0067.jpg';
+import dreamProjectImg from '../image/Screenshot 2025-08-16 234248.png';
 // ============================================================================
 // PERSONAL INFORMATION - Basic profile details and social links
 // ============================================================================
@@ -36,7 +23,7 @@ export const personalInfo = {
     shortRole: "Dev",
     location: "India",
     email: "nilanjan@example.com", // TODO: Update with real email
-    resumeUrl: "public/Nilajan Nayak.pdf", // TODO: Update with real resume URL
+    resumeUrl: "/Nilajan Nayak.pdf", // Updated to point to the file in public folder
     social: [
         { icon: Github, url: "https://github.com/Nilanjan-Nayak", label: "GitHub" },
         { icon: Linkedin, url: "https://www.linkedin.com/in/nilanjan-nayak-73b475322/overlay/contact-info/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BD1ft0KEzQY6kECT7CBgilQ%3D%3D", label: "LinkedIn" },
@@ -63,13 +50,24 @@ export const heroData = {
         { value: "100%", label: "Commitment" }
     ],
     featuredProjects: [
-        { name: "E-Commerce AI", tech: "Next.js + OpenAI", year: "2024", image: "—Pngtree—n circle letter initial logo_4835121_processed.png" },
-        { name: "Crypto Dashboard", tech: "React + D3", year: "2023", image: "IMG-20251021-WA0067.jpg" },
-        { name: "SaaS ", tech: "Vue + Firebase", year: "2023", image: "IMG-20251021-WA0067.jpg" },
-        { name: " Platform", tech: "Vue + Firebase", year: "2023", image: "IMG-20251021-WA0067.jpg" },
-        { name: "Saform", tech: "Vue + Firebase", year: "2023", image: "IMG-20251021-WA0067.jpg" },
-        { name: "Sarm", tech: "Vue + Firebase", year: "2023", image: "IMG-20251021-WA0067.jpg" },
-        { name: "form", tech: "Vue + Firebase", year: "2023", image: "IMG-20251021-WA0067.jpg" }
+        {
+            name: "Star Ai Labs",
+            tech: "React + Node.js + MongoDB",
+            year: "2024",
+            image: "/images/—Pngtree—n circle letter initial logo_4835121_processed.png"
+        },
+        {
+            name: "Star Assistant",
+            tech: "React",
+            year: "2024",
+            image: "/images/IMG-20251021-WA0067.jpg"
+        },
+        {
+            name: "SaaS Platform",
+            tech: "Vue + Firebase",
+            year: "2023",
+            image: "/images/IMG-20251021-WA0067.jpg"
+        },
     ]
 };
 
@@ -78,7 +76,7 @@ export const heroData = {
 // ============================================================================
 export const aboutData = {
     // Profile image
-    profileImage: "src/image/IMG-20251021-WA0067.jpg", // TODO: Update with professional headshot
+    profileImage: profileImg, // TODO: Update with professional headshot
 
     // Professional summary
     summary: {
@@ -199,47 +197,166 @@ export const aboutData = {
 };
 
 // ============================================================================
+// DREAM PROJECT SECTION - Special showcase for the ultimate project
+// ============================================================================
+export const dreamProjectData = {
+    title: "Star AI Lab",
+    description: "A revolutionary platform that integrates IoT, AI, and blockchain to create intelligent, sustainable, and connected urban environments. This project represents the convergence of cutting-edge technologies to solve real-world challenges.",
+    vision: "To transform urban living by creating self-optimizing cities that enhance quality of life, reduce environmental impact, and foster innovation through data-driven decision making.",
+    category: "Website Based Project",
+    status: "In Development",
+    image: dreamProjectImg, // TODO: Update with dream project image
+
+    // Quick stats displayed prominently
+    quickStats: [
+        { value: "Trail Mode ", label: "Users" },
+        { value: "1+", label: "Modules" },
+        { value: "99.9%", label: "Uptime" }
+    ],
+
+    // Key features
+    keyFeatures: [
+        "Real-time Traffic Optimization",
+        "Smart Energy Management",
+        "Predictive Maintenance",
+        "Citizen Engagement Portal",
+        "Environmental Monitoring",
+        "Emergency Response System"
+    ],
+
+    // Technology stack
+    techStack: [
+        "React",
+        "Node.js",
+        "Python",
+        "TensorFlow",
+        "Blockchain",
+        "IoT",
+        "AWS",
+        "Kubernetes",
+        "GraphQL",
+        "PostgreSQL"
+    ],
+
+    // Expected impact
+    impact: [
+        "Reduce city energy consumption by 30% through AI-driven optimization",
+        "Decrease traffic congestion by 40% with predictive routing algorithms",
+        "Improve emergency response times by 50% using real-time data analytics",
+        "Enable data-driven policy making for sustainable urban development"
+    ],
+
+    // Timeline
+    timeline: {
+        start: "Jan 2024",
+        end: "Dec 2025"
+    },
+
+    // Team information
+    teamSize: "Me only",
+
+    // Progress percentage
+    progress: 20,
+
+    // Links
+    liveUrl: "https://smartcity-demo.example.com",
+    githubUrl: "https://github.com/username/smart-city-platform"
+};
+
+// ============================================================================
 // PROJECTS SECTION - Portfolio showcase
 // ============================================================================
-export const projectsData = [
-    {
-        title: "Nebula - AI Analytics Dashboard",
-        description: "A powerful analytics platform powered by AI to visualize complex data streams in real-time. Features predictive modeling and customizable widgets.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?fit=crop&w=1600&q=80",
-        tags: ["React", "Python", "TensorFlow", "D3.js"],
-        category: "AI / Data",
-        stats: { status: "Live", year: "2024" },
-        achievements: ["Processed 1M+ data points", "Reduced latency by 40%"],
-        liveUrl: "#",
-        githubUrl: "#",
-        accent: "#5AA8D6"
-    },
-    {
-        title: "Aether - Decentralized Exchange",
-        description: "A next-generation DEX built on Ethereum, offering lightning-fast swaps and liquidity pooling with minimal gas fees.",
-        image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?fit=crop&w=1600&q=80",
-        tags: ["Solidity", "Web3.js", "Next.js", "Tailwind"],
-        category: "Web3 / FinTech",
-        stats: { status: "Beta", year: "2023" },
-        achievements: ["$5M TVL in first month", "Audited by CertiK"],
-        liveUrl: "#",
-        githubUrl: "#",
-        accent: "#3066be"
-    },
-    {
-        title: "Zenith - Task Management",
-        description: "A collaborative workspace for remote teams, integrating video calls, real-time editing, and project tracking in one seamless interface.",
-        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?fit=crop&w=1600&q=80",
-        tags: ["Vue.js", "Firebase", "WebRTC", "Electron"],
-        category: "SaaS / Productivity",
-        stats: { status: "v2.0", year: "2023" },
-        achievements: ["10k+ Daily Active Users", "Featured on Product Hunt"],
-        liveUrl: "#",
-        githubUrl: "#",
-        accent: "#00bfff"
-    }
-];
+// data/portfolio.ts
+export interface ProjectStats {
+    year: string;
+    status: 'Live' | 'In Progress' | 'Completed';
+    stars?: string;
+    commits?: string;
+    views?: string;
+    forks?: string;
+}
 
+export interface Project {
+    title: string;
+    description: string;
+    image: string;
+    tags: string[];
+    category: string;
+    accent: string;
+    liveUrl: string;
+    githubUrl: string;
+    achievements: string[];
+    stats: ProjectStats;
+}
+
+export const projectsData: Project[] = [
+    {
+        title: "AI-Powered Analytics Dashboard",
+        description: "Real-time analytics platform with machine learning insights, predictive analytics, and customizable data visualizations for enterprise-level decision making.",
+        image: dreamProjectImg,
+        tags: ["React", "TypeScript", "Python", "TensorFlow", "D3.js", "PostgreSQL", "Redis"],
+        category: "Full-Stack",
+        accent: "#5AA8D6",
+        liveUrl: "https://analytics-demo.example.com",
+        githubUrl: "https://github.com/username/analytics-dashboard",
+        achievements: [
+            "Processed 1M+ data points daily with 99.9% accuracy",
+            "Reduced data processing time by 75% using ML optimization",
+
+        ],
+        stats: {
+            year: "2024",
+            status: "In Progress",
+
+        }
+    },
+    {
+        title: "E-Commerce Marketplace Platform",
+        description: "Comprehensive multi-vendor marketplace with advanced search, real-time inventory management, secure payment processing, and AI-driven product recommendations.",
+        image: "/projects/ecommerce-platform.jpg",
+        tags: ["Next.js", "Node.js", "MongoDB", "Stripe", "Elasticsearch", "AWS"],
+        category: "Full-Stack",
+        accent: "#3066be",
+        liveUrl: "https://marketplace-demo.example.com",
+        githubUrl: "https://github.com/username/marketplace",
+        achievements: [
+            "Achieved 60% faster page loads through optimization",
+            "Integrated payment gateway with 99.99% uptime",
+
+        ],
+        stats: {
+            year: "2024",
+            status: "Live",
+            stars: "856",
+            commits: "743",
+            views: "3.8k"
+        }
+    },
+    {
+        title: "Collaborative Project Management Tool",
+        description: "Modern project management solution with real-time collaboration, Kanban boards, Gantt charts, time tracking, and team communication features.",
+        image: "/projects/project-management.jpg",
+        tags: ["Vue.js", "Firebase", "Node.js", "Socket.io", "Tailwind CSS"],
+        category: "SaaS",
+        accent: "#00bfff",
+        liveUrl: "https://projecthub-demo.example.com",
+        githubUrl: "https://github.com/username/project-hub",
+        achievements: [
+            "Real-time sync across 1000+ concurrent users",
+            "Built drag-and-drop interface with smooth animations",
+
+        ],
+        stats: {
+            year: "2023",
+            status: "Live",
+            stars: "645",
+            commits: "892",
+            views: "2.9k"
+        }
+    },
+
+
+];
 // ============================================================================
 // SKILLS SECTION - Technical competencies
 // ============================================================================
@@ -254,8 +371,9 @@ export const skillsData = {
             gradient: "from-[#3066be] to-[#5AA8D6]",
             iconSize: 48,
             skills: [
-                { name: "React", level: 95, years: 5, projects: 40 },
+                { name: "React", level: 70, years: 3, projects: 6 },
                 { name: "TypeScript", level: 90, years: 4, projects: 35 },
+                { name: "Next.js", level: 20, years: 1, projects: 2 },
                 { name: "Tailwind", level: 95, years: 3, projects: 50 }
             ]
         },
@@ -339,7 +457,9 @@ export const contactData = {
 export const navItems = [
     { id: 'hero', label: 'Home', sectionId: 'hero' },
     { id: 'about', label: 'About', sectionId: 'about' },
+    { id: 'dream-project', label: 'Dream Project', sectionId: 'dream-project' },
     { id: 'projects', label: 'Projects', sectionId: 'projects' },
     { id: 'skills', label: 'Skills', sectionId: 'skills' },
     { id: 'contact', label: 'Contact', sectionId: 'contact' }
 ];
+

@@ -3,23 +3,11 @@ import { ChevronDown, ArrowUpRight, FileDown, Calendar, MapPin, Terminal } from 
 import { personalInfo, heroData } from '../data/portfolio';
 
 export default function Hero() {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [activeProject, setActiveProject] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
 
   const { featuredProjects } = heroData;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const windowHeight = window.innerHeight;
-      setScrollProgress(Math.min(scrolled / windowHeight, 1));
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setCurrentTime(new Date());
@@ -48,8 +36,8 @@ export default function Hero() {
 
       {/* Main Content */}
       <div className="relative min-h-screen flex items-center pt-12 sm:pt-16">
-        <div className="container mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
-          <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center">
+        <div className="container mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+          <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-6 sm:gap-8 lg:gap-20 xl:gap-24 items-center">
 
             {/* Left Side - Typography Focus */}
             <div className="space-y-5 sm:space-y-6 lg:space-y-8 order-2 lg:order-1 relative z-10">
@@ -203,11 +191,7 @@ export default function Hero() {
                   {/* Project Image Background with Code Overlay */}
                   <div className="absolute inset-0 w-full h-full overflow-hidden">
                     <img
-                      src={
-                        featuredProjects[activeProject].image.startsWith('http')
-                          ? featuredProjects[activeProject].image
-                          : `/src/image/${featuredProjects[activeProject].image}`
-                      }
+                      src={featuredProjects[activeProject].image}
                       alt="Featured project showcase"
                       key={activeProject}
                       className="w-full h-full object-cover opacity-30 animate-slideIn"
