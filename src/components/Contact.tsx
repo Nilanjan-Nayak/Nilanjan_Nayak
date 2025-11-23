@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { 
+import {
   Mail, MapPin, Phone, Send, CheckCircle2,
   Linkedin, Github, Twitter, Globe, Clock, MessageSquare,
   Sparkles, ArrowUpRight, Calendar
@@ -17,8 +17,7 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [focusedField, setFocusedField] = useState<string | null>(null);
-  
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
@@ -86,45 +85,42 @@ export default function Contact() {
   ];
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="contact" 
-      className="relative min-h-screen py-20 lg:py-32 px-4 sm:px-6 bg-gradient-to-b from-[#02000d] via-[#050939] to-[#02000d] overflow-hidden"
+      id="contact"
+      className="relative py-20 lg:py-32 bg-transparent overflow-hidden"
     >
-      {/* Premium Background */}
+      {/* Background Elements - Matching other sections */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(90,168,214,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(90,168,214,0.01)_1px,transparent_1px)] bg-[size:64px_64px]" />
-        
-        {/* Ambient Lighting */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#3066be] rounded-full blur-[180px] opacity-12 animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#5AA8D6] rounded-full blur-[180px] opacity-10 animate-pulse-slow" style={{ animationDelay: '2s' }} />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(90,168,214,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(90,168,214,0.02)_1px,transparent_1px)] bg-[size:50px_50px] opacity-50" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 40 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-20"
+          className="text-center mb-16 lg:mb-24"
         >
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isHeaderInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[#131c80]/30 via-[#3066be]/20 to-[#131c80]/30 backdrop-blur-xl border border-[#5AA8D6]/30 rounded-full mb-10 shadow-[0_0_40px_rgba(90,168,214,0.2)]"
+            className="inline-flex items-center gap-3 px-5 py-2 bg-[#5AA8D6]/10 backdrop-blur-sm border border-[#5AA8D6]/20 rounded-full mb-6"
           >
             <div className="w-5 h-5 flex items-center justify-center">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <Sparkles size={20} className="text-[#5AA8D6]" />
+                <Sparkles size={16} className="text-[#5AA8D6]" />
               </motion.div>
             </div>
-            <span className="text-sm font-semibold text-slate-200 uppercase tracking-[0.15em]">
+            <span className="text-sm font-semibold text-[#5AA8D6] uppercase tracking-wider">
               Let's Connect
             </span>
           </motion.div>
@@ -133,9 +129,9 @@ export default function Contact() {
             initial={{ opacity: 0, y: 24 }}
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-[1.1]"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 tracking-tight"
           >
-            <span className="bg-gradient-to-r from-[#5AA8D6] via-[#3066be] to-[#00bfff] bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(90,168,214,0.4)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5AA8D6] to-[#3066be]">
               Get In Touch
             </span>
           </motion.h2>
@@ -150,7 +146,7 @@ export default function Contact() {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1fr,1.2fr] gap-8">
+        <div className="grid lg:grid-cols-[1fr,1.2fr] gap-8 lg:gap-16">
           {/* Left Column - Contact Info */}
           <div className="space-y-6">
             {/* Contact Methods */}
@@ -169,17 +165,12 @@ export default function Contact() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.5 + idx * 0.1 }}
-                    className="group relative block bg-gradient-to-br from-[#07203f]/60 to-[#050939]/60 backdrop-blur-3xl rounded-2xl p-6 border-2 border-[#131c80]/40 hover:border-[#5AA8D6]/60 transition-all duration-500 shadow-[0_0_40px_rgba(19,28,128,0.3)] hover:shadow-[0_0_60px_rgba(90,168,214,0.5)]"
+                    className="group relative block bg-[#0a0e1a]/80 backdrop-blur-sm rounded-xl p-6 border border-[#1a1f35] hover:border-[#3066be]/30 transition-all duration-300"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#3066be]/5 to-[#5AA8D6]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
                     <div className="relative z-10 flex items-start gap-4">
                       {/* Icon */}
-                      <div className="relative flex-shrink-0 w-14 h-14">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${method.gradient} rounded-xl shadow-[0_0_30px_rgba(90,168,214,0.4)] group-hover:scale-110 transition-transform duration-500`} />
-                        <div className="absolute inset-[2px] bg-gradient-to-br from-[#050939] to-[#02000d] rounded-xl flex items-center justify-center">
-                          <Icon size={24} className="text-[#5AA8D6]" strokeWidth={2.5} />
-                        </div>
+                      <div className={`p-3 rounded-lg bg-gradient-to-br ${method.gradient} bg-opacity-10 group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon size={24} className="text-white" />
                       </div>
 
                       {/* Content */}
@@ -191,7 +182,7 @@ export default function Contact() {
                         <div className="text-sm text-slate-400">{method.description}</div>
                       </div>
 
-                      <ArrowUpRight size={20} className="text-slate-600 group-hover:text-[#5AA8D6] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                      <ArrowUpRight size={18} className="text-slate-600 group-hover:text-[#5AA8D6] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all flex-shrink-0" />
                     </div>
                   </motion.a>
                 );
@@ -203,7 +194,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.8 }}
-              className="bg-gradient-to-br from-[#07203f]/60 to-[#050939]/60 backdrop-blur-3xl rounded-2xl p-6 border-2 border-[#131c80]/40 shadow-[0_0_40px_rgba(19,28,128,0.3)]"
+              className="bg-[#0a0e1a]/80 backdrop-blur-sm rounded-xl p-6 border border-[#1a1f35]"
             >
               <h3 className="text-lg font-bold text-white mb-4">Connect With Me</h3>
               <div className="grid grid-cols-4 gap-3">
@@ -218,9 +209,9 @@ export default function Contact() {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isHeaderInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.5, delay: 0.9 + idx * 0.1 }}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      className="group relative w-full aspect-square bg-[#131c80]/30 rounded-xl border border-[#3066be]/20 hover:border-[#5AA8D6]/50 flex items-center justify-center transition-all hover:shadow-[0_0_30px_rgba(90,168,214,0.3)]"
+                      className="group relative w-full aspect-square bg-[#1a1f35]/50 rounded-lg border border-[#3066be]/20 hover:border-[#5AA8D6]/50 flex items-center justify-center transition-all"
                       aria-label={social.label}
                     >
                       <Icon size={20} className="text-slate-400 group-hover:text-[#5AA8D6] transition-colors" strokeWidth={2.5} />
@@ -235,7 +226,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 1 }}
-              className="bg-gradient-to-br from-[#3066be]/10 to-[#5AA8D6]/10 backdrop-blur-xl rounded-2xl p-6 border border-[#3066be]/30"
+              className="bg-gradient-to-br from-[#3066be]/10 to-[#5AA8D6]/10 backdrop-blur-sm rounded-xl p-6 border border-[#3066be]/20"
             >
               <h3 className="text-lg font-bold text-white mb-4">Why Work Together?</h3>
               <div className="space-y-3">
@@ -265,12 +256,10 @@ export default function Contact() {
             initial={{ opacity: 0, x: 40 }}
             animate={isHeaderInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.6 }}
-            className="relative bg-gradient-to-br from-[#07203f]/60 to-[#050939]/60 backdrop-blur-3xl rounded-3xl p-8 border-2 border-[#131c80]/40 shadow-[0_0_60px_rgba(19,28,128,0.4)]"
+            className="relative bg-[#0a0e1a]/80 backdrop-blur-sm rounded-xl p-8 border border-[#1a1f35]"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#3066be]/5 to-transparent rounded-3xl" />
-            
             <div className="relative z-10">
-              <h3 className="text-2xl font-black text-white mb-2">Send a Message</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Send a Message</h3>
               <p className="text-sm text-slate-400 mb-8">Fill out the form and I'll get back to you within 24 hours</p>
 
               {/* Success Message */}
@@ -278,7 +267,7 @@ export default function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-6 p-4 bg-gradient-to-r from-emerald-500/20 to-green-500/20 border-2 border-emerald-500/50 rounded-xl flex items-start gap-3"
+                  className="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg flex items-start gap-3"
                 >
                   <CheckCircle2 size={20} className="text-emerald-400 flex-shrink-0 mt-0.5" />
                   <div>
@@ -291,7 +280,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Field */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-2">
                     Your Name <span className="text-[#5AA8D6]">*</span>
                   </label>
                   <div className="relative">
@@ -301,25 +290,16 @@ export default function Contact() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      onFocus={() => setFocusedField('name')}
-                      onBlur={() => setFocusedField(null)}
                       required
-                      className="w-full h-12 px-4 bg-[#131c80]/30 border-2 border-[#3066be]/30 focus:border-[#5AA8D6] rounded-xl text-white placeholder-slate-500 focus:outline-none transition-all text-sm"
+                      className="w-full px-4 py-3 bg-[#02000d] border border-[#1a1f35] rounded-lg text-white placeholder-slate-600 focus:outline-none focus:border-[#5AA8D6] focus:ring-1 focus:ring-[#5AA8D6] transition-all"
                       placeholder="John Doe"
                     />
-                    {focusedField === 'name' && (
-                      <motion.div
-                        layoutId="inputFocus"
-                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#3066be]/10 to-[#5AA8D6]/10 pointer-events-none"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
                   </div>
                 </div>
 
                 {/* Email Field */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-2">
                     Email Address <span className="text-[#5AA8D6]">*</span>
                   </label>
                   <div className="relative">
@@ -329,25 +309,16 @@ export default function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      onFocus={() => setFocusedField('email')}
-                      onBlur={() => setFocusedField(null)}
                       required
-                      className="w-full h-12 px-4 bg-[#131c80]/30 border-2 border-[#3066be]/30 focus:border-[#5AA8D6] rounded-xl text-white placeholder-slate-500 focus:outline-none transition-all text-sm"
+                      className="w-full px-4 py-3 bg-[#02000d] border border-[#1a1f35] rounded-lg text-white placeholder-slate-600 focus:outline-none focus:border-[#5AA8D6] focus:ring-1 focus:ring-[#5AA8D6] transition-all"
                       placeholder="john@example.com"
                     />
-                    {focusedField === 'email' && (
-                      <motion.div
-                        layoutId="inputFocus"
-                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#3066be]/10 to-[#5AA8D6]/10 pointer-events-none"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
                   </div>
                 </div>
 
                 {/* Subject Field */}
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-medium text-slate-400 mb-2">
                     Subject <span className="text-[#5AA8D6]">*</span>
                   </label>
                   <div className="relative">
@@ -357,25 +328,16 @@ export default function Contact() {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      onFocus={() => setFocusedField('subject')}
-                      onBlur={() => setFocusedField(null)}
                       required
-                      className="w-full h-12 px-4 bg-[#131c80]/30 border-2 border-[#3066be]/30 focus:border-[#5AA8D6] rounded-xl text-white placeholder-slate-500 focus:outline-none transition-all text-sm"
+                      className="w-full px-4 py-3 bg-[#02000d] border border-[#1a1f35] rounded-lg text-white placeholder-slate-600 focus:outline-none focus:border-[#5AA8D6] focus:ring-1 focus:ring-[#5AA8D6] transition-all"
                       placeholder="Project Inquiry"
                     />
-                    {focusedField === 'subject' && (
-                      <motion.div
-                        layoutId="inputFocus"
-                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#3066be]/10 to-[#5AA8D6]/10 pointer-events-none"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
                   </div>
                 </div>
 
                 {/* Message Field */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2">
                     Your Message <span className="text-[#5AA8D6]">*</span>
                   </label>
                   <div className="relative">
@@ -384,20 +346,11 @@ export default function Contact() {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      onFocus={() => setFocusedField('message')}
-                      onBlur={() => setFocusedField(null)}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 bg-[#131c80]/30 border-2 border-[#3066be]/30 focus:border-[#5AA8D6] rounded-xl text-white placeholder-slate-500 focus:outline-none transition-all resize-none text-sm"
+                      className="w-full px-4 py-3 bg-[#02000d] border border-[#1a1f35] rounded-lg text-white placeholder-slate-600 focus:outline-none focus:border-[#5AA8D6] focus:ring-1 focus:ring-[#5AA8D6] transition-all resize-none"
                       placeholder="Tell me about your project, goals, and timeline..."
                     />
-                    {focusedField === 'message' && (
-                      <motion.div
-                        layoutId="inputFocus"
-                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#3066be]/10 to-[#5AA8D6]/10 pointer-events-none"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
                   </div>
                   <div className="text-xs text-slate-500 mt-2">Minimum 10 characters required</div>
                 </div>
@@ -408,11 +361,11 @@ export default function Contact() {
                   disabled={isSubmitting}
                   whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                  className="group relative w-full h-14 bg-gradient-to-r from-[#3066be] to-[#5AA8D6] hover:from-[#5AA8D6] hover:to-[#00bfff] text-white font-bold rounded-xl transition-all duration-300 shadow-[0_0_40px_rgba(90,168,214,0.4)] hover:shadow-[0_0_60px_rgba(90,168,214,0.6)] disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
+                  className="group relative w-full py-4 bg-gradient-to-r from-[#3066be] to-[#5AA8D6] hover:from-[#5AA8D6] hover:to-[#00bfff] text-white font-bold rounded-lg transition-all duration-300 shadow-lg shadow-[#5AA8D6]/30 hover:shadow-[#5AA8D6]/50 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden flex items-center justify-center gap-2"
                 >
                   {/* Shimmer Effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  
+
                   <span className="relative flex items-center justify-center gap-2">
                     {isSubmitting ? (
                       <>
@@ -434,16 +387,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.05); }
-        }
-        
-        .animate-pulse-slow {
-          animation: pulse-slow 6s ease-in-out infinite;
-        }
-      `}</style>
+
     </section>
   );
 }

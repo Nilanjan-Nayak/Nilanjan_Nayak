@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { Code2, Github, Terminal, Zap, Sparkles, LucideIcon, Database, Rocket } from 'lucide-react';
+import { personalInfo } from '../data/portfolio';
 
 // Premium Particle System
 const ParticleField = () => {
@@ -49,7 +50,7 @@ const ParticleField = () => {
 const TypewriterEffect = ({ text, className = "" }: { text: string; className?: string }) => {
   const [displayText, setDisplayText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
-  
+
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
@@ -60,11 +61,11 @@ const TypewriterEffect = ({ text, className = "" }: { text: string; className?: 
         clearInterval(timer);
       }
     }, 120);
-    
+
     const cursorTimer = setInterval(() => {
       setShowCursor(prev => !prev);
     }, 500);
-    
+
     return () => {
       clearInterval(timer);
       clearInterval(cursorTimer);
@@ -137,7 +138,7 @@ const BackgroundEffect = () => (
 
     {/* Subtle Grid Pattern */}
     <div className="absolute inset-0 bg-[linear-gradient(rgba(90,168,214,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(90,168,214,0.02)_1px,transparent_1px)] bg-[size:120px_120px] opacity-40" />
-    
+
     {/* Particle Field */}
     <ParticleField />
   </>
@@ -146,12 +147,12 @@ const BackgroundEffect = () => (
 // Premium Icon Button
 const IconButton = ({ Icon, delay = 0 }: { Icon: LucideIcon; delay?: number }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ 
+      transition={{
         delay,
         type: "spring",
         stiffness: 200,
@@ -171,11 +172,11 @@ const IconButton = ({ Icon, delay = 0 }: { Icon: LucideIcon; delay?: number }) =
         }}
         transition={{ duration: 0.3 }}
       />
-      
+
       {/* Icon Container */}
       <div className="relative p-3 sm:p-4 bg-gradient-to-br from-[#050939]/90 to-[#02000d]/90 backdrop-blur-xl rounded-full border border-[#131c80]/40 shadow-2xl">
         <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-slate-200" />
-        
+
         {/* Sparkle Effect on Hover */}
         <AnimatePresence>
           {isHovered && (
@@ -268,7 +269,7 @@ const WelcomeScreen = ({ onLoadingComplete }: WelcomeScreenProps) => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    
+
     return () => {
       clearInterval(progressInterval);
       window.removeEventListener('mousemove', handleMouseMove);
@@ -314,10 +315,10 @@ const WelcomeScreen = ({ onLoadingComplete }: WelcomeScreenProps) => {
           >
             <BackgroundEffect />
           </motion.div>
-          
+
           <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 z-10">
             <div className="w-full max-w-5xl mx-auto">
-              
+
               {/* Animated Icon Circle */}
               <div className="flex justify-center mb-16">
                 <div className="relative">
@@ -360,7 +361,7 @@ const WelcomeScreen = ({ onLoadingComplete }: WelcomeScreenProps) => {
                       Welcome
                     </span>
                   </motion.h1>
-                  
+
                   <motion.div
                     className="text-xl sm:text-2xl md:text-3xl text-slate-300"
                     initial={{ opacity: 0 }}
@@ -388,8 +389,8 @@ const WelcomeScreen = ({ onLoadingComplete }: WelcomeScreenProps) => {
                     >
                       <Sparkles className="w-5 h-5 text-[#5AA8D6]" />
                     </motion.div>
-                    <TypewriterEffect 
-                      text="Nilanjan Nayak" 
+                    <TypewriterEffect
+                      text={personalInfo.name}
                       className="text-xl sm:text-2xl font-semibold text-slate-100"
                     />
                   </div>

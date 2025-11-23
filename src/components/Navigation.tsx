@@ -1,28 +1,23 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Download, ArrowUpRight } from 'lucide-react';
+import { Menu, X, Terminal, Github, Linkedin, Twitter } from 'lucide-react';
+import { navItems, personalInfo } from '../data/portfolio';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
+      setIsScrolled(window.scrollY > 50);
 
-      setIsScrolled(scrollTop > 30);
-      setScrollProgress(progress);
-
-      // Active section detection
+      // Update active section based on scroll position
       const sections = navItems.map(item => item.sectionId);
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 150 && rect.bottom >= 150;
+          return rect.top <= 100 && rect.bottom >= 100;
         }
         return false;
       });
@@ -34,213 +29,142 @@ export default function Navigation() {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    setIsMobileMenuOpen(false);
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setActiveSection(sectionId);
-      setIsMobileMenuOpen(false);
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const navItems = [
-    { id: 'hero', label: 'Home', sectionId: 'hero' },
-    { id: 'about', label: 'About', sectionId: 'about' },
-    { id: 'projects', label: 'Projects', sectionId: 'projects' },
-    { id: 'skills', label: 'Skills', sectionId: 'skills' },
-    { id: 'contact', label: 'Contact', sectionId: 'contact' },
-  ];
-
   return (
     <>
-      {/* Ultra-Refined Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? 'py-2' : 'py-4'}`}>
-        <div className="container mx-auto max-w-[1400px] px-6">
-          {/* Main Navigation Container */}
-          <div className={`relative transition-all duration-700 ${isScrolled
-              ? 'backdrop-blur-3xl bg-[#02000d]/95 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-b border-[#131c80]/20'
-              : 'backdrop-blur-xl bg-[#02000d]/80 border-b border-[#131c80]/10'
-            } rounded-2xl`}>
-
-            {/* Elegant Gradient Background */}
-            <div className="absolute inset-0 opacity-20 rounded-2xl overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#5AA8D6]/40 to-transparent" />
-            </div>
-
-            {/* Content */}
-            <div className="relative px-6 lg:px-8 py-4 flex items-center justify-between">
-
-              {/* Minimalist Logo */}
-              <button
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-2' : 'py-4'
+          }`}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className={`relative transition-all duration-500 rounded-2xl ${isScrolled
+                ? 'backdrop-blur-xl bg-[#02000d]/80 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-[#1a1f35]/50'
+                : 'backdrop-blur-sm bg-transparent border border-transparent'
+              }`}
+          >
+            <div className="flex items-center justify-between px-4 py-3">
+              {/* Logo */}
+              <div
                 onClick={() => scrollToSection('hero')}
-                className="group flex items-center gap-3"
+                className="flex items-center gap-2 cursor-pointer group"
               >
-                {/* Logo Icon */}
-                <div className="relative w-10 h-10 rounded-xl overflow-hidden">
-
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img src="src\image\—Pngtree—n circle letter initial logo_4835121_processed.png" alt="logo" />
+                <div className="relative flex items-center justify-center w-10 h-10 bg-gradient-to-br ">
+                  <img src="src\image\—Pngtree—n circle letter initial logo_4835121_processed.png" alt="" />
+                  <div className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300" />
+                </div>
+                <div className="hidden sm:block">
+                  <div className="text-lg font-bold text-white leading-none tracking-tight group-hover:text-[#5AA8D6] transition-colors">
+                    {personalInfo.name.split(' ')[0]}
                   </div>
-                  {/* Subtle Glow */}
-
+                  <div className="text-[10px] font-mono text-slate-400 tracking-widest uppercase">
+                    Portfolio
+                  </div>
                 </div>
+              </div>
 
-                {/* Brand Text */}
-                <div className="hidden sm:flex flex-col">
-                  <span className="text-base font-bold text-slate-100 tracking-tight leading-none">
-                    Nilanjan Nayak
-                  </span>
-                  <span className="text-[10px] text-slate-500 font-medium tracking-wider mt-0.5">
-                    DEVELOPER
-                  </span>
-                </div>
-              </button>
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex items-center gap-1 bg-[#0a0e1a]/50 p-1.5 rounded-full border border-[#1a1f35]/50 backdrop-blur-md">
+                {navItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.sectionId)}
+                    className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${activeSection === item.sectionId
+                        ? 'text-white'
+                        : 'text-slate-400 hover:text-white hover:bg-[#1a1f35]'
+                      }`}
+                  >
+                    {activeSection === item.sectionId && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#3066be] to-[#5AA8D6] rounded-full shadow-[0_0_15px_rgba(90,168,214,0.4)] -z-10 animate-fade-in" />
+                    )}
+                    {item.label}
+                  </button>
+                ))}
+              </div>
 
-              {/* Refined Desktop Navigation */}
-              <div className="hidden lg:flex items-center">
-                <div className="flex items-center gap-1 px-2 py-1.5 rounded-xl bg-[#050939]/30 backdrop-blur-sm border border-[#131c80]/20">
-                  {navItems.map((item) => {
-                    const isActive = activeSection === item.sectionId;
-
+              {/* Social Icons & Mobile Toggle */}
+              <div className="flex items-center gap-3">
+                <div className="hidden sm:flex items-center gap-2 pr-4 border-r border-[#1a1f35]">
+                  {personalInfo.social.slice(0, 3).map((social, index) => {
+                    const Icon = social.icon;
                     return (
-                      <button
-                        key={item.sectionId}
-                        onClick={() => scrollToSection(item.sectionId)}
-                        className="group relative px-5 py-2 rounded-lg transition-all duration-300"
+                      <a
+                        key={index}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-slate-400 hover:text-[#5AA8D6] hover:bg-[#1a1f35] rounded-lg transition-all duration-300"
+                        aria-label={social.label}
                       >
-                        {/* Active Background */}
-                        {isActive && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-[#3066be]/90 to-[#5AA8D6]/90 rounded-lg shadow-lg" />
-                        )}
-
-                        {/* Hover Background */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#3066be]/0 to-[#5AA8D6]/0 group-hover:from-[#3066be]/20 group-hover:to-[#5AA8D6]/20 rounded-lg transition-all duration-300" />
-
-                        {/* Text */}
-                        <span className={`relative text-sm font-medium tracking-wide transition-colors duration-300 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'
-                          }`}>
-                          {item.label}
-                        </span>
-
-                        {/* Active Indicator */}
-                        {isActive && (
-                          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#00bfff] shadow-[0_0_8px_rgba(0,191,255,0.8)]" />
-                        )}
-                      </button>
+                        <Icon size={18} />
+                      </a>
                     );
                   })}
                 </div>
-              </div>
 
-              {/* Action Area */}
-              <div className="flex items-center gap-3">
-                {/* Premium CTA */}
                 <a
-                  href="/resume.pdf"
+                  href={personalInfo.resumeUrl}
                   download
-                  className="hidden sm:flex group relative items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#3066be] to-[#5AA8D6] rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_8px_24px_rgba(90,168,214,0.35)]"
+                  className="hidden sm:flex px-4 py-2 bg-[#1a1f35] hover:bg-[#3066be] text-white text-sm font-medium rounded-lg transition-colors border border-[#3066be]/30"
                 >
-                  {/* Shimmer */}
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-                  <Download size={16} className="text-white relative z-10" />
-                  <span className="text-sm font-semibold text-white relative z-10">Resume</span>
+                  Resume
                 </a>
 
-                {/* Mobile Toggle */}
+                {/* Mobile Menu Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="lg:hidden w-10 h-10 rounded-lg bg-[#050939]/50 border border-[#131c80]/30 backdrop-blur-sm flex items-center justify-center text-slate-300 hover:text-[#5AA8D6] hover:border-[#3066be]/40 transition-all duration-300"
+                  className="md:hidden p-2 text-slate-300 hover:text-white hover:bg-[#1a1f35] rounded-lg transition-colors"
                 >
-                  {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                  {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </div>
-            </div>
-
-            {/* Elegant Progress Indicator */}
-            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#131c80]/30 to-transparent">
-              <div
-                className="h-full bg-gradient-to-r from-[#3066be] via-[#5AA8D6] to-[#00bfff] transition-all duration-300"
-                style={{ width: `${scrollProgress}%` }}
-              />
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Refined Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-700 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        className={`fixed inset-0 z-40 bg-[#02000d]/95 backdrop-blur-xl transition-all duration-500 md:hidden ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
       >
-        {/* Premium Backdrop */}
-        <div
-          className="absolute inset-0 backdrop-blur-3xl bg-gradient-to-b from-[#02000d]/98 via-[#050939]/98 to-[#02000d]/98"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
+        <div className="flex flex-col items-center justify-center h-full space-y-8 p-4">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.sectionId)}
+              className={`text-2xl font-bold transition-colors ${activeSection === item.sectionId
+                  ? 'text-[#5AA8D6]'
+                  : 'text-slate-400 hover:text-white'
+                }`}
+            >
+              {item.label}
+            </button>
+          ))}
 
-        {/* Menu Content */}
-        <div className="relative h-full flex flex-col justify-center">
-          {/* Navigation Items */}
-          <div className="px-8 space-y-2">
-            {navItems.map((item, index) => {
-              const isActive = activeSection === item.sectionId;
+          <div className="w-12 h-px bg-[#1a1f35]" />
 
+          <div className="flex gap-6">
+            {personalInfo.social.map((social, index) => {
+              const Icon = social.icon;
               return (
-                <button
-                  key={item.sectionId}
-                  onClick={() => scrollToSection(item.sectionId)}
-                  className={`w-full text-left transition-all duration-500 ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
-                    }`}
-                  style={{ transitionDelay: `${index * 60}ms` }}
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-[#1a1f35] rounded-full text-slate-400 hover:text-[#5AA8D6] transition-colors"
                 >
-                  <div className={`relative px-6 py-4 rounded-xl transition-all duration-300 ${isActive
-                      ? 'bg-gradient-to-r from-[#3066be]/30 to-[#5AA8D6]/30 border-l-4 border-[#5AA8D6]'
-                      : 'bg-[#050939]/20 border-l-4 border-transparent hover:border-[#3066be]/40 hover:bg-[#050939]/40'
-                    }`}>
-                    {/* Number */}
-                    <div className={`text-xs font-mono mb-1 transition-colors duration-300 ${isActive ? 'text-[#5AA8D6]' : 'text-slate-600'
-                      }`}>
-                      0{index + 1}
-                    </div>
-
-                    {/* Label */}
-                    <div className="flex items-center justify-between">
-                      <span className={`text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-white' : 'text-slate-400'
-                        }`}>
-                        {item.label}
-                      </span>
-
-                      {isActive && (
-                        <ArrowUpRight size={18} className="text-[#5AA8D6]" />
-                      )}
-                    </div>
-                  </div>
-                </button>
+                  <Icon size={24} />
+                </a>
               );
             })}
-          </div>
-
-          {/* Footer */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 space-y-4">
-            {/* CTA */}
-            <a
-              href="/resume.pdf"
-              download
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="group flex items-center justify-center gap-3 w-full px-6 py-4 bg-gradient-to-r from-[#3066be] to-[#5AA8D6] rounded-xl overflow-hidden transition-all duration-300"
-            >
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-              <Download size={20} className="text-white relative z-10" />
-              <span className="text-base font-semibold text-white relative z-10">Download Resume</span>
-            </a>
-
-            {/* Contact */}
-            <div className="text-center">
-              <p className="text-xs text-slate-600 uppercase tracking-widest mb-1">Contact</p>
-              <a href="mailto:your.email@example.com" className="text-sm text-[#5AA8D6] hover:text-[#00bfff] transition-colors">
-                your.email@example.com
-              </a>
-            </div>
           </div>
         </div>
       </div>
