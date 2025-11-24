@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 import { ChevronDown, ArrowUpRight, FileDown, Calendar, MapPin, Terminal } from 'lucide-react';
 import { personalInfo, heroData } from '../data/portfolio';
 
+import HeroBackground from './HeroBackground';
+
 export default function Hero() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [activeProject, setActiveProject] = useState(0);
@@ -30,9 +32,11 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen bg-transparent text-slate-50 overflow-hidden"
     >
-      {/* Background Elements Removed to show global fixed background */}
+      {/* New Animated Assistant Background */}
+      <HeroBackground />
+
       {/* Subtle Gradient Overlay for Text Contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#02000d]/50 to-[#02000d] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#02000d]/50 to-[#02000d] pointer-events-none z-0" />
 
       {/* Main Content */}
       <div className="relative min-h-screen flex items-center pt-12 sm:pt-16">

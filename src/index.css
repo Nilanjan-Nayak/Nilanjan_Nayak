@@ -9,8 +9,16 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply antialiased;
+  html {
+    scroll-behavior: smooth;
+    background-color: #02000d;
+    overscroll-behavior-y: none;
+    /* Prevents "hanging" or bounce effects */
+  }
+
+  body {
+    @apply antialiased bg-[#02000d] text-slate-50;
+    overscroll-behavior-y: none;
   }
 }
 
@@ -384,31 +392,19 @@
       transform: translateY(100%);
     }
   }
-
-  .animate-scan {
-    animation: scan 3s ease-in-out infinite;
-  }
-
-  /* Enhanced Gradient Animation */
-  .animate-gradient-x {
-    background-size: 200% 200%;
-    animation: gradientX 8s ease infinite;
-  }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, #7928ca, #ff0080);
-  border-radius: 2px;
+  border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

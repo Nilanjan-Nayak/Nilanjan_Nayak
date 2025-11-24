@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, Home, User, Briefcase, Code2, Send, Sparkles } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, Home, User, Briefcase, Code2, Send, Sparkles } from 'lucide-react';
 import { navItems, personalInfo } from '../data/portfolio';
 import logoImg from '../image/—Pngtree—n circle letter initial logo_4835121_processed.png';
 

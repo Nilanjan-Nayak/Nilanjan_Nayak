@@ -16,7 +16,6 @@ import {
   TrendingUp,
   Zap,
   Award,
-  Users,
   Clock
 } from 'lucide-react';
 import { projectsData } from '../data/portfolio';
@@ -32,7 +31,6 @@ export default function Projects() {
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [progress, setProgress] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
@@ -640,8 +638,6 @@ export default function Projects() {
             {projectsData.map((project, idx) => (
               <div
                 key={idx}
-                onMouseEnter={() => setHoveredCard(idx)}
-                onMouseLeave={() => setHoveredCard(null)}
                 className="group relative"
                 style={{
                   animation: `fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards`,

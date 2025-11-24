@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
 import { ChevronRight, Download, ExternalLink } from 'lucide-react';
 import { aboutData, personalInfo } from '../data/portfolio';
 
 export default function About() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [hoveredStat, setHoveredStat] = useState<number | null>(null);
 
   return (
     <section id="about" className="relative py-20 lg:py-32 bg-transparent overflow-hidden">
@@ -365,7 +362,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Certifications - Compact Tech Style */}
+            {/* Certifications - Compact Tech Style
             <div className="relative pt-6 border-t border-[#1a1f35]">
               <div className="flex items-center gap-2 mb-5">
                 <div className="w-1 h-4 bg-[#5AA8D6] rounded-full" />
@@ -388,7 +385,7 @@ export default function About() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Certifications */}
             <div className="space-y-4 sm:space-y-6">
