@@ -184,6 +184,7 @@ export default function About() {
                               {exp.role}
                             </h4>
                             <div className="text-sm sm:text-base text-[#5AA8D6] font-medium">{exp.company}</div>
+                            <div className="text-sm sm:text-base text-[#5AA8D6] font-medium">{exp.result}</div>
                           </div>
                           <div className="flex flex-col sm:items-end gap-1">
                             <span className="text-xs sm:text-sm font-mono text-slate-400 bg-[#1a1f35] px-2 py-1 rounded w-fit">

@@ -10,24 +10,27 @@ import {
     Layout,
     Server,
     Cloud,
+    Code,
+    Cpu,
+    Brain
 } from 'lucide-react';
 
 import profileImg from '../image/IMG-20251021-WA0067.jpg';
 import dreamProjectImg from '../image/Screenshot 2025-08-16 234248.png';
+
 // ============================================================================
 // PERSONAL INFORMATION - Basic profile details and social links
 // ============================================================================
 export const personalInfo = {
     name: "Nilanjan Nayak",
-    role: "Full Stack Developer",
+    role: "Full Stack Developer / Coder",
     shortRole: "Dev",
-    location: "India",
-    email: "nilanjan@example.com", // TODO: Update with real email
-    resumeUrl: "/Nilajan Nayak.pdf", // Updated to point to the file in public folder
+    location: "Bishnupur, West Bengal, India",
+    email: "nayaknilanjan2@gmail.com",
+    resumeUrl: "/Nilajan Nayak.pdf",
     social: [
         { icon: Github, url: "https://github.com/Nilanjan-Nayak", label: "GitHub" },
-        { icon: Linkedin, url: "https://www.linkedin.com/in/nilanjan-nayak-73b475322/overlay/contact-info/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BD1ft0KEzQY6kECT7CBgilQ%3D%3D", label: "LinkedIn" },
-
+        { icon: Linkedin, url: "https://www.linkedin.com/in/nilanjan-nayak", label: "LinkedIn" },
         { icon: Mail, url: "mailto:nayaknilanjan2@gmail.com", label: "Email" }
     ]
 };
@@ -45,27 +48,39 @@ export const heroData = {
         "Specializing in React, Node.js, and modern web technologies to turn complex problems into simple, beautiful solutions."
     ],
     stats: [
-        { value: "5+", label: "Years Exp" },
-        { value: "50+", label: "Projects" },
-        { value: "100%", label: "Commitment" }
+        { value: "3+", label: "Years Exp" },
+        { value: "10+", label: "Projects" },
+        { value: "5k+", label: "Lines of Code" }
     ],
     featuredProjects: [
         {
-            name: "Star Ai Labs",
-            tech: "React + Node.js + MongoDB",
+            name: "Star Ai lab",
+            tech: "React + AI",
             year: "2024",
             image: "/images/—Pngtree—n circle letter initial logo_4835121_processed.png"
         },
         {
-            name: "Star Assistant",
-            tech: "React",
+            name: "Carrrerkick",
+            tech: "Web Dev",
             year: "2024",
             image: "/images/IMG-20251021-WA0067.jpg"
         },
         {
-            name: "SaaS Platform",
-            tech: "Vue + Firebase",
-            year: "2023",
+            name: "Star Assistant",
+            tech: "Python + Analytics + React + Node.js",
+            year: "Appearing",
+            image: "/images/IMG-20251021-WA0067.jpg"
+        },
+        {
+            name: "Media storage Management",
+            tech: "html + css + js + Python",
+            year: "2025",
+            image: "/images/IMG-20251021-WA0067.jpg"
+        },
+        {
+            name: "Star Mobile Assistant",
+            tech: "Python + Analytics + React + Node.js + Flutter",
+            year: "Appearing",
             image: "/images/IMG-20251021-WA0067.jpg"
         },
     ]
@@ -76,123 +91,167 @@ export const heroData = {
 // ============================================================================
 export const aboutData = {
     // Profile image
-    profileImage: profileImg, // TODO: Update with professional headshot
+    profileImage: profileImg,
 
     // Professional summary
     summary: {
         text: [
-            "I am a passionate Full Stack Developer with a deep love for creating elegant, efficient, and scalable web applications. My journey began with a curiosity for how things work on the internet, which quickly turned into a career dedicated to building the future of the web.",
-            "With over 5 years of experience, I have honed my skills in both frontend and backend technologies. I believe in writing clean, maintainable code and designing user interfaces that are not only visually stunning but also intuitive and accessible."
+            "I am a passionate Full Stack Developer and Diploma student in Computer Science at Uluberia Government Polytechnic (WBSCTE). My journey is defined by a relentless curiosity for technology.",
+            "With a strong foundation in Python, React, Node.js, JavaScript, and Web Technologies, I specialize in building data-driven applications and immersive web experiences. I am constantly exploring Generative AI and Data Structures to push the boundaries of what's possible."
         ],
         coreCompetencies: [
             "Full Stack Development",
-            "UI/UX Design",
-            "Cloud Architecture",
-            "Performance Optimization",
-            "Agile Methodology"
+            "React",
+            "Python ",
+            "Node.js",
+            "JavaScript",
+            "Data Structures & Algorithms",
+            "Web Technologies",
+            "Flutter"
         ]
     },
 
-    // Work experience timeline
+    // Study Experience
     experiences: [
         {
-            role: "NILANJAN TATA ",
-            company: "Tech Innovations Inc.",
-            period: "2022 - Present",
-            location: "Remote",
-            type: "Full-time",
-            description: "Leading a team of developers to build scalable SaaS products. Architected the core platform using Next.js and NestJS, resulting in a 40% improvement in performance.",
+            role: "Uluberia Government Polytechnic",
+            company: "West Bengal State Council of Technical Education (WBSCTE)",
+            result: "GPA { 6.4 to 7.2 }",
+            period: "2022 - 2025",
+            location: "Uluberia, West Bengal, India",
+            type: "Diploma",
+            description: "Diploma in Computer Science and Technology.",
             achievements: [
-                "Spearheaded the migration from legacy code to a modern microservices architecture.",
-                "Implemented CI/CD pipelines that reduced deployment time by 60%.",
-                "Mentored junior developers and conducted code reviews to ensure high quality."
+                "Completed Diploma in Computer Science and Technology.",
+                "Completed intensive hands-on training and certification.",
             ],
-            tech: ["React", "Node.js", "AWS", "Docker", "TypeScript"],
-            gradient: "from-[#3066be] to-[#5AA8D6]"
+            tech: ["Python", "JavaScript", "HTML", "CSS", "Web Development", "Application Development"],
+            gradient: "from-[#131c80] to-[#3066be]"
         },
         {
-            role: "Frontend Developer",
-            company: "Creative Digital Agency",
-            period: "2020 - 2022",
-            location: "New York, USA",
-            type: "Contract",
-            description: "Collaborated with designers to bring creative concepts to life. Developed interactive and responsive websites for high-profile clients.",
+            role: "Kulumbani Jamunadas Khamka High School",
+            company: "West Bengal Board of Secondary Education (WBSE)",
+            result: "Maks-42%",
+            period: "2021 - 2022 (Secondary)",
+            location: "Bishnupur, West Bengal, India",
+            type: "Secondary",
+            description: "Secondary School Certificate.",
             achievements: [
-                "Developed award-winning websites featured on Awwwards.",
-                "Optimized frontend performance, achieving 95+ Lighthouse scores.",
-                "Integrated complex animations using GSAP and Framer Motion."
+                "Completed Secondary School Certificate.",
+                "Completed intensive hands-on training and certification.",
             ],
-            tech: ["Vue.js", "GSAP", "Sass", "Firebase"],
-            gradient: "from-[#5AA8D6] to-[#00bfff]"
-        }
-    ],
-    internships: [
-        {
-            role: "NILANJAN TATA ",
-            company: "Tech Innovations Inc.",
-            period: "2022 - Present",
-            location: "Remote",
-            type: "Full-time",
-            description: "Leading a team of developers to build scalable SaaS products. Architected the core platform using Next.js and NestJS, resulting in a 40% improvement in performance.",
-            achievements: [
-                "Spearheaded the migration from legacy code to a modern microservices architecture.",
-                "Implemented CI/CD pipelines that reduced deployment time by 60%.",
-                "Mentored junior developers and conducted code reviews to ensure high quality."
-            ],
-            tech: ["React", "Node.js", "AWS", "Docker", "TypeScript"],
-            gradient: "from-[#3066be] to-[#5AA8D6]"
+            tech: ["English", "Bengali", "Math", "Science", "Social"],
+            gradient: "from-[#131c80] to-[#3066be]"
         },
+
     ],
 
-    // Science Fair Achievements & Certificates
+    // Internships
+    internships: [
+        {
+            role: "Web Development Intern",
+            company: "Aeonix Research & Innovations LLP",
+            period: "Oct 2024 - Oct 2024",
+            location: "West Bengal, India",
+            type: "Internship",
+            description: "Completed a 1-month industrial internship focusing on basic web development.",
+            achievements: [
+                "Developed responsive web pages using HTML, CSS, and JavaScript.",
+                "Collaborated on live projects and learned industry best practices.",
+                "Awarded Certificate of Achievement (SL No: AEONIX/2024/ARI00758)."
+            ],
+            tech: ["HTML", "CSS", "JavaScript"],
+            gradient: "from-[#3066be] to-[#5AA8D6]"
+        },
+        {
+            role: "Data Visualization Intern",
+            company: "Tata (Forage Job Simulation)",
+            period: "Aug 2024",
+            location: "Remote",
+            type: "Simulation",
+            description: "Empowering business with effective insights through data visualization.",
+            achievements: [
+                "Created impactful data visualizations for Tata Consultancy Services.",
+                "Prepared strategic questions for client senior leadership meetings.",
+                "Analyzed complex datasets to support executive decision-making."
+            ],
+            tech: ["Data Visualization", "Analytics", "Business Intelligence"],
+            gradient: "from-[#5AA8D6] to-[#00bfff]"
+        },
+        {
+            role: "Python Developer Trainee",
+            company: "Ardent Computech Pvt Ltd",
+            period: "Oct 2023 - Nov 2023",
+            location: "West Bengal, India",
+            type: "Industrial Training",
+            description: "Industrial Intensive Activate program focused on Python Programming.",
+            achievements: [
+                "Mastered Python programming fundamentals and application development.",
+                "Completed intensive hands-on training and certification.",
+                "Certification ID: ARDENT/2023/AD85608."
+            ],
+            tech: ["Python", "Application Development"],
+            gradient: "from-[#131c80] to-[#3066be]"
+        },
+        {
+            role: "Full Stack Web Development",
+            company: "YCSAS PVT. LTD.",
+            period: "30th Sep 2024 - 10th Nov 2024",
+            location: "West Bengal, India",
+            type: "Industrial Training",
+            description: "Outstanding completion of the online autumn internship program.",
+            achievements: [
+                "Completed online autumn internship program in Full Stack Web Development.",
+                "Recognized for being hardworking, sincere, and diligent.",
+                "Certificate No: YCSAS/INTR/2024/0038"
+            ],
+            tech: ["Full Stack", "Web Development", "Python"],
+            gradient: "from-[#131c80] to-[#3066be]"
+        },
+    ], // Keeping empty as we moved them to experiences for better visibility
+
+    // Education & Achievements
     scienceFairs: [
         {
-            name: "Calcata Technical School Science Fair",
-            category: "Robotics & AI",
-            achievement: "Gold Medal",
-            date: "March 2024",
-            description: "Developed an AI-powered autonomous robot for disaster relief operations",
-            certificate: "/certificates/nsf-2024.pdf",
-            gradient: "from-[#FFD700] to-[#FFA500]",
+            name: " Science & Engineering Fair 2025",
+            category: "BIRLA INDUSTRIAL & TECHNOLOGICAL MUSEUM",
+            achievement: "Participate",
+            date: "7th - 10th Jan 2025",
+            description: " Participated in the prestigious Science & Engineering Fair 2025 organized by Birla Industrial & Technological Museum (a unit of National Council of Science Museums, Ministry of Culture, Govt. of India). Demonstrated scientific creativity and innovation by presenting a project in the Uluberia Govt. Polytechnic, Howrah, West Bengal category during this interstate science exhibition held from January 7-10, 2025. The fair showcased cutting-edge science models from Eastern India under the theme \"Science and Technology for Sustainable Future\"",
+            certificate: "",
+            gradient: "from-[#FFD700] to-[#FFA500],from-[#C0C0C0] to-[#A8A8A8]",
+            icon: "🔭"
+        },
+        {
+            name: "Inter College Science Fair & Practical Project Exibition 2025",
+            category: "THE CALCUTTA TECHNICAL SCHOOL",
+            achievement: "Participate in Group ",
+            date: "9th May 2024",
+            description: "Participated in the prestigious Inter College Science Fair & Practical Project Exibition 2025 organized by The Calcutta Technical School (a unit of National Council of Science Museums, Ministry of Culture, Govt. of India). Demonstrated scientific creativity and innovation by presenting a project in the Uluberia Govt. Polytechnic, Howrah, West Bengal category during this interstate science exhibition held from May 9, 2024.",
+            certificate: "",
+            gradient: "from-[#C0C0C0] to-[#A8A8A8],from-[#FFD700] to-[#FFA500]",
             icon: "🏅5️⃣"
         },
         {
-            name: "State Science Exhibition 2023",
-            category: "Computer Science",
-            achievement: "First Prize",
-            date: "November 2023",
-            description: "Created a machine learning model for early disease detection",
-            certificate: "/certificates/sse-2023.pdf",
-            gradient: "from-[#C0C0C0] to-[#A8A8A8]",
-            icon: "🥇"
-        },
-        {
-            name: "Regional Innovation Challenge",
-            category: "IoT & Automation",
-            achievement: "Best Innovation Award",
-            date: "August 2023",
-            description: "Smart home automation system using IoT sensors and cloud integration",
-            certificate: "/certificates/ric-2023.pdf",
-            gradient: "from-[#CD7F32] to-[#8B4513]",
-            icon: "🥉"
-        },
-        {
-            name: "Youth Tech Summit 2023",
-            category: "Web Development",
-            achievement: "Excellence Award",
-            date: "June 2023",
-            description: "Full-stack e-commerce platform with real-time analytics dashboard",
-            certificate: "/certificates/yts-2023.pdf",
-            gradient: "from-[#5AA8D6] to-[#3066be]",
-            icon: "⭐"
+            name: "Workshop on Basic Digital Electronics",
+            category: "ULUBERIA GOVT. POLYTECHNIC",
+            achievement: "Participate in Group ",
+            date: "9th and 10th Aug 2023",
+            description: "Participated in the prestigious Workshop on Basic Digital Electronics organized by Uluberia Govt. Polytechnic, Howrah, West Bengal. Demonstrated scientific creativity and innovation by presenting a project in the Uluberia Govt. Polytechnic, Howrah, West Bengal category during this interstate science exhibition held from Aug 9-10, 2023.",
+            certificate: "",
+            gradient: "from-[#C0C0C0] to-[#A8A8A8],from-[#FFD700] to-[#FFA500]",
+            icon: "💡"
         }
     ],
 
     // Professional certifications
     certifications: [
-        { name: "AWS Certified Solutions Architect", issuer: "Amazon Web Services", year: "2023" },
-        { name: "Meta Frontend Developer Professional", issuer: "Coursera", year: "2022" },
-        { name: "Google UX Design Professional", issuer: "Google", year: "2021" }
+        { name: "Basic Web Development", issuer: "Aeonix Research & Innovations LLP", year: "2024" },
+        { name: "Data Visualisation", issuer: "Tata (Forage)", year: "2024" },
+        { name: "Data Analytics", issuer: "Accenture", year: "2024" },
+        { name: "Python Programming", issuer: "Ardent Computech Pvt Ltd", year: "2023" },
+        { name: "Generative AI", issuer: "Microsoft & LinkedIn", year: "2024" },
+        { name: "Full Stack Web Development", issuer: "YCSAS PVT. LTD.", year: "2024" },
     ]
 };
 
@@ -205,7 +264,7 @@ export const dreamProjectData = {
     vision: "To transform urban living by creating self-optimizing cities that enhance quality of life, reduce environmental impact, and foster innovation through data-driven decision making.",
     category: "Website Based Project",
     status: "In Development",
-    image: dreamProjectImg, // TODO: Update with dream project image
+    image: dreamProjectImg,
 
     // Quick stats displayed prominently
     quickStats: [
@@ -291,72 +350,67 @@ export interface Project {
 
 export const projectsData: Project[] = [
     {
-        title: "AI-Powered Analytics Dashboard",
-        description: "Real-time analytics platform with machine learning insights, predictive analytics, and customizable data visualizations for enterprise-level decision making.",
+        title: "Star Ai lab",
+        description: "An innovative website project focusing on AI integration and modern web technologies.",
         image: dreamProjectImg,
-        tags: ["React", "TypeScript", "Python", "TensorFlow", "D3.js", "PostgreSQL", "Redis"],
+        tags: ["React", "AI", "Web Development"],
         category: "Full-Stack",
         accent: "#5AA8D6",
-        liveUrl: "https://analytics-demo.example.com",
-        githubUrl: "https://github.com/username/analytics-dashboard",
+        liveUrl: "https://star-ai-lab.example.com",
+        githubUrl: "https://github.com/Nilanjan-Nayak",
         achievements: [
-            "Processed 1M+ data points daily with 99.9% accuracy",
-            "Reduced data processing time by 75% using ML optimization",
-
+            "Implemented modern UI/UX principles",
+            "Integrated AI-driven features"
         ],
         stats: {
             year: "2024",
             status: "In Progress",
-
         }
     },
     {
-        title: "E-Commerce Marketplace Platform",
-        description: "Comprehensive multi-vendor marketplace with advanced search, real-time inventory management, secure payment processing, and AI-driven product recommendations.",
+        title: "Carrrerkick",
+        description: "A comprehensive internship website designed to connect students with opportunities.",
         image: "/projects/ecommerce-platform.jpg",
-        tags: ["Next.js", "Node.js", "MongoDB", "Stripe", "Elasticsearch", "AWS"],
-        category: "Full-Stack",
+        tags: ["HTML", "CSS", "JavaScript", "Web Design"],
+        category: "Web Dev",
         accent: "#3066be",
-        liveUrl: "https://marketplace-demo.example.com",
-        githubUrl: "https://github.com/username/marketplace",
+        liveUrl: "https://carrrerkick.example.com",
+        githubUrl: "https://github.com/Nilanjan-Nayak",
         achievements: [
-            "Achieved 60% faster page loads through optimization",
-            "Integrated payment gateway with 99.99% uptime",
-
+            "Designed user-friendly interface",
+            "Optimized for performance"
         ],
         stats: {
             year: "2024",
             status: "Live",
-            stars: "856",
-            commits: "743",
-            views: "3.8k"
+            stars: "12",
+            commits: "45",
+            views: "1.2k"
         }
     },
     {
-        title: "Collaborative Project Management Tool",
-        description: "Modern project management solution with real-time collaboration, Kanban boards, Gantt charts, time tracking, and team communication features.",
+        title: "Tata Data Visualization",
+        description: "Data visualization project for Tata Consultancy Services job simulation, providing business insights.",
         image: "/projects/project-management.jpg",
-        tags: ["Vue.js", "Firebase", "Node.js", "Socket.io", "Tailwind CSS"],
-        category: "SaaS",
+        tags: ["Data Visualization", "Analytics", "Business Intelligence"],
+        category: "Data Science",
         accent: "#00bfff",
-        liveUrl: "https://projecthub-demo.example.com",
-        githubUrl: "https://github.com/username/project-hub",
+        liveUrl: "#",
+        githubUrl: "https://github.com/Nilanjan-Nayak",
         achievements: [
-            "Real-time sync across 1000+ concurrent users",
-            "Built drag-and-drop interface with smooth animations",
-
+            "Created effective visual insights",
+            "Analyzed key business metrics"
         ],
         stats: {
-            year: "2023",
-            status: "Live",
-            stars: "645",
-            commits: "892",
-            views: "2.9k"
+            year: "2024",
+            status: "Completed",
+            stars: "5",
+            commits: "10",
+            views: "100"
         }
     },
-
-
 ];
+
 // ============================================================================
 // SKILLS SECTION - Technical competencies
 // ============================================================================
@@ -365,65 +419,66 @@ export const skillsData = {
     categories: [
         {
             id: 1,
-            title: "Frontend",
-            icon: Layout,
+            title: "Languages",
+            icon: Code,
             size: "lg:col-span-2 lg:row-span-2",
             gradient: "from-[#3066be] to-[#5AA8D6]",
             iconSize: 48,
             skills: [
-                { name: "React", level: 70, years: 3, projects: 6 },
-                { name: "TypeScript", level: 90, years: 4, projects: 35 },
-                { name: "Next.js", level: 20, years: 1, projects: 2 },
-                { name: "Tailwind", level: 95, years: 3, projects: 50 }
+                { name: "Python", level: 85, years: 3, projects: 15 },
+                { name: "C", level: 80, years: 2, projects: 10 },
+                { name: "JavaScript", level: 75, years: 2, projects: 12 },
+                { name: "HTML/CSS", level: 90, years: 3, projects: 20 }
             ]
         },
         {
             id: 2,
-            title: "Backend",
+            title: "Technologies",
             icon: Server,
             size: "lg:col-span-1 lg:row-span-1",
             gradient: "from-[#5AA8D6] to-[#00bfff]",
             iconSize: 32,
             skills: [
-                { name: "Node.js", level: 90, years: 4, projects: 30 },
-                { name: "Python", level: 85, years: 3, projects: 15 }
+                { name: "React", level: 70, years: 1, projects: 5 },
+                { name: "Node.js", level: 60, years: 1, projects: 3 }
             ]
         },
         {
             id: 3,
-            title: "Database",
-            icon: Database,
+            title: "Data & AI",
+            icon: Brain,
             size: "lg:col-span-1 lg:row-span-1",
             gradient: "from-[#00bfff] to-[#3066be]",
             iconSize: 32,
             skills: [
-                { name: "PostgreSQL", level: 85, years: 4, projects: 20 },
-                { name: "Mongo", level: 80, years: 3, projects: 25 }
+                { name: "Generative AI", level: 75, years: 1, projects: 5 },
+                { name: "Data Viz", level: 80, years: 2, projects: 8 },
+                { name: "Algorithms", level: 70, years: 2, projects: 10 }
             ]
         },
         {
             id: 4,
-            title: "DevOps",
-            icon: Cloud,
+            title: "Tools",
+            icon: Cpu,
             size: "lg:col-span-2 lg:row-span-1",
             gradient: "from-[#131c80] to-[#3066be]",
             iconSize: 40,
             skills: [
-                { name: "AWS", level: 75, years: 3, projects: 10 },
-                { name: "Docker", level: 80, years: 3, projects: 20 },
-                { name: "CI/CD", level: 85, years: 4, projects: 30 }
+                { name: "MS Copilot", level: 85, years: 1, projects: 5 },
+                { name: "Git/GitHub", level: 80, years: 2, projects: 15 },
+                { name: "VS Code", level: 95, years: 3, projects: 50 }
             ]
         }
     ],
 
     // Radar chart data for skill visualization
     radar: [
-        { name: "Code Quality", level: 95 },
-        { name: "Architecture", level: 90 },
-        { name: "UI/UX", level: 85 },
-        { name: "Performance", level: 92 },
-        { name: "Security", level: 88 },
-        { name: "Testing", level: 85 }
+        { name: "Coding", level: 90 },
+        { name: "Algorithms", level: 75 },
+        { name: "Web Dev", level: 85 },
+        { name: "Data Viz", level: 80 },
+        { name: "Gen AI", level: 70 },
+        { name: "Design", level: 65 }
     ]
 };
 
@@ -435,17 +490,17 @@ export const contactData = {
         {
             icon: Mail,
             label: "Email Me",
-            value: "nilanjan@example.com",
+            value: "nayaknilanjan2@gmail.com",
             description: "I usually reply within 24 hours",
-            link: "mailto:nilanjan@example.com",
+            link: "mailto:nayaknilanjan2@gmail.com",
             gradient: "from-[#3066be] to-[#5AA8D6]"
         },
         {
             icon: Globe,
             label: "Socials",
-            value: "@nilanjan_dev",
+            value: "@Nilanjan-Nayak",
             description: "Follow my daily updates",
-            link: "https://twitter.com",
+            link: "https://github.com/Nilanjan-Nayak",
             gradient: "from-[#5AA8D6] to-[#00bfff]"
         }
     ]
@@ -462,4 +517,3 @@ export const navItems = [
     { id: 'skills', label: 'Skills', sectionId: 'skills' },
     { id: 'contact', label: 'Contact', sectionId: 'contact' }
 ];
-
