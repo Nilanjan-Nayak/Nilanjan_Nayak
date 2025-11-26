@@ -469,7 +469,6 @@ export const skillsData = {
                 { name: "MS Copilot",   level: 85, years: 1, projects: 5, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" },
                 { name: "Git/GitHub",   level: 80, years: 2, projects: 15, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
                 { name: "VS Code",      level: 95, years: 3, projects: 6, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
-                { name: "cursor",       level: 95, years: 3, projects: 5, logo: "src/image/cursor.svg" },
             ]
         }
     ],

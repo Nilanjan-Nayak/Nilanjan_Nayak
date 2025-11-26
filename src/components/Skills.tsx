@@ -3,8 +3,8 @@ import { skillsData } from '../data/portfolio';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles, TrendingUp, Award, ChevronRight, Star,
-  Play, Pause, RotateCcw, Layers, Eye, Grid3X3, Orbit,
-  ArrowUpRight, Flame, Trophy, Clock, Briefcase, MousePointer2
+  Play, Pause, RotateCcw, Layers, Grid3X3, Orbit,
+  Flame, Trophy, Clock, Briefcase, MousePointer2
 } from 'lucide-react';
 
 // ============================================
@@ -13,23 +13,19 @@ import {
 const PremiumBackground = () => {
   return (
     <>
-      {/* Main gradient */}
-      
-
       {/* Animated mesh gradient - Mobile/Tablet/Desktop */}
       <div className="absolute inset-0 opacity-20">
-        {/* Mobile: 300px, Tablet: 500px, Desktop: 800px */}
         <div className="absolute top-0 left-1/4 w-[300px] md:w-[500px] lg:w-[800px] h-[300px] md:h-[500px] lg:h-[800px] rounded-full bg-gradient-to-r from-blue-600/20 to-cyan-600/20 blur-[60px] md:blur-[90px] lg:blur-[120px] animate-pulse" />
         <div className="absolute bottom-0 right-1/4 w-[250px] md:w-[400px] lg:w-[600px] h-[250px] md:h-[400px] lg:h-[600px] rounded-full bg-gradient-to-r from-purple-600/15 to-pink-600/15 blur-[50px] md:blur-[70px] lg:blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
-      {/* Premium grid - Responsive sizing */}
+      {/* Premium grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:24px_24px] md:bg-[size:48px_48px] lg:bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
 
       {/* Noise texture */}
-      <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)"/%3E%3C/svg%3E")' }} />
+      <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
 
-      {/* Floating orbs - Responsive count */}
+      {/* Floating orbs */}
       {[...Array(4)].map((_, i) => (
         <motion.div
           key={i}
@@ -55,6 +51,171 @@ const PremiumBackground = () => {
 };
 
 // ============================================
+// SKILL DETAILS PANEL - COMPACT PROFESSIONAL DESIGN
+// ============================================
+const SkillDetailsPanel = ({ skill, category }: any) => {
+  if (!skill) {
+    return (
+      <div className="h-full min-h-[280px] flex flex-col items-center justify-center p-4 text-center border border-slate-800/50 backdrop-blur-md rounded-xl relative overflow-hidden group">
+        {/* Animated dots pattern */}
+        <div className="absolute inset-0 opacity-10">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                scale: [1, 1.5, 1],
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 2 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="relative z-10 mb-3">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <category.icon className="w-6 h-6 text-slate-500 group-hover:text-blue-400 transition-colors" />
+          </div>
+        </div>
+
+        <h3 className="relative z-10 text-base font-bold text-white mb-1">Select Technology</h3>
+        <p className="relative z-10 text-slate-500 text-xs max-w-[180px]">
+          Click on any skill to view details
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      key={skill.name}
+      className="relative h-full min-h-[280px] bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl rounded-xl border border-slate-700/50 overflow-hidden shadow-2xl"
+    >
+      {/* Hexagonal pattern background */}
+      <div className="absolute inset-0 opacity-5">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(0.5)">
+              <polygon points="24.8,22 37.3,29.2 37.3,43.7 24.8,50.9 12.3,43.7 12.3,29.2" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hexagons)" className="text-blue-400" />
+        </svg>
+      </div>
+
+      {/* Top accent bar */}
+      <div className={`h-0.5 bg-gradient-to-r ${category.gradient}`} />
+
+      <div className="p-4 relative z-10 h-auto flex flex-col">
+        {/* Compact Header */}
+        <div className="flex items-center gap-2.5 mb-3 pb-3 border-b border-slate-700/50">
+          {/* Logo container */}
+          <div className="relative w-11 h-11 flex-shrink-0">
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg rotate-45 border border-slate-700/50" />
+            <div className={`absolute inset-0.5 bg-gradient-to-br ${category.gradient} opacity-10 rounded-lg rotate-45`} />
+            <div className="absolute inset-0 flex items-center justify-center">
+              {skill.logo ? (
+                <img src={skill.logo} alt={skill.name} className="w-7 h-7 object-contain drop-shadow-lg" />
+              ) : (
+                <span className="text-base font-bold text-white">{skill.name.substring(0, 2)}</span>
+              )}
+            </div>
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg font-black text-white truncate mb-0.5">{skill.name}</h3>
+            <div className="flex items-center gap-2">
+              <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-slate-800/80 text-slate-400 border border-slate-700/50 uppercase tracking-wide">
+                {category.title}
+              </span>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className={`w-2 h-2 ${i < Math.floor(skill.level / 20) ? 'fill-yellow-500 text-yellow-500' : 'fill-slate-800 text-slate-800'}`} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Compact Proficiency Display */}
+        <div className="mb-3">
+          <div className="flex items-end justify-between mb-1.5">
+            <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Proficiency</span>
+            <span className="text-xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              {skill.level}%
+            </span>
+          </div>
+          <div className="relative h-1.5 bg-slate-800/50 rounded-full overflow-hidden border border-slate-700/30">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${skill.level}%` }}
+              transition={{ duration: 1, ease: "circOut" }}
+              className={`h-full bg-gradient-to-r ${category.gradient} relative`}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Compact Stats - Inline */}
+        <div className="grid grid-cols-2 gap-2.5 mb-3">
+          <div className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-800/30 border border-slate-700/30 group hover:bg-slate-800/50 transition-all">
+            <div className="w-7 h-7 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+              <Clock className="w-3.5 h-3.5 text-blue-400" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-bold text-white leading-none mb-0.5">{skill.years}</div>
+              <div className="text-[8px] text-slate-400 uppercase tracking-wide font-semibold">Years</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-800/30 border border-slate-700/30 group hover:bg-slate-800/50 transition-all">
+            <div className="w-7 h-7 rounded-md bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+              <Briefcase className="w-3.5 h-3.5 text-purple-400" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-base font-bold text-white leading-none mb-0.5">{skill.projects}+</div>
+              <div className="text-[8px] text-slate-400 uppercase tracking-wide font-semibold">Projects</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Compact Tags/Badges */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          <span className="px-2 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/20 text-[9px] font-semibold text-blue-400">
+            Production Ready
+          </span>
+          <span className="px-2 py-0.5 rounded-md bg-green-500/10 border border-green-500/20 text-[9px] font-semibold text-green-400">
+            {skill.level >= 80 ? 'Expert' : skill.level >= 60 ? 'Advanced' : 'Intermediate'}
+          </span>
+          <span className="px-2 py-0.5 rounded-md bg-purple-500/10 border border-purple-500/20 text-[9px] font-semibold text-purple-400">
+            Active
+          </span>
+        </div>
+
+        {/* Compact Footer */}
+        <div className="mt-auto pt-2.5 border-t border-slate-700/30">
+          <p className="text-[10px] text-slate-400 leading-relaxed">
+            <span className={`inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.gradient} mr-1.5`} />
+            Proven expertise in building scalable solutions
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// ============================================
 // SKILL PLANET - MOBILE/TABLET/DESKTOP
 // ============================================
 const SkillPlanet = ({
@@ -62,6 +223,7 @@ const SkillPlanet = ({
   index,
   totalSkills,
   onHover,
+  onClick,
   gradient,
   orbitRadius,
   rotationAngle
@@ -73,7 +235,6 @@ const SkillPlanet = ({
   const x = Math.cos(radians) * orbitRadius;
   const y = Math.sin(radians) * orbitRadius;
 
-  // Mobile: 48px, Tablet: 60px, Desktop: 72px
   const planetSize = typeof window !== 'undefined'
     ? window.innerWidth < 768 ? 24 : window.innerWidth < 1024 ? 30 : 36
     : 30;
@@ -95,13 +256,17 @@ const SkillPlanet = ({
         setIsHovered(false);
         onHover(null);
       }}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick(skill);
+      }}
     >
       <motion.div
         whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.95 }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
         className="relative"
       >
-        {/* Outer glow */}
         {isHovered && (
           <motion.div
             className={`absolute -inset-2 md:-inset-3 lg:-inset-4 rounded-full bg-gradient-to-r ${gradient} blur-md md:blur-lg lg:blur-xl`}
@@ -111,7 +276,6 @@ const SkillPlanet = ({
           />
         )}
 
-        {/* Planet container - Mobile: 48px, Tablet: 60px, Desktop: 72px */}
         <div className={`
           relative w-12 h-12 md:w-[60px] md:h-[60px] lg:w-[72px] lg:h-[72px] 
           rounded-xl md:rounded-2xl cursor-pointer
@@ -124,7 +288,6 @@ const SkillPlanet = ({
             : 'border-slate-700/50'
           }
         `}>
-          {/* Animated gradient background */}
           {isHovered && (
             <motion.div
               className={`absolute inset-0 bg-gradient-to-br ${gradient}`}
@@ -134,19 +297,10 @@ const SkillPlanet = ({
             />
           )}
 
-          {/* Shine effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
 
-          {/* Progress ring - Responsive viewBox */}
           <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 72 72">
-            <circle
-              cx="36"
-              cy="36"
-              r="34"
-              fill="none"
-              stroke="rgba(255,255,255,0.05)"
-              strokeWidth="2"
-            />
+            <circle cx="36" cy="36" r="34" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="2" />
             <motion.circle
               cx="36"
               cy="36"
@@ -169,16 +323,13 @@ const SkillPlanet = ({
             </defs>
           </svg>
 
-          {/* Skill icon/logo - Mobile: 24px, Tablet: 28px, Desktop: 36px */}
           <div className="relative z-10">
             {skill.logo ? (
               <motion.img
                 src={skill.logo}
                 alt={skill.name}
                 className="w-6 h-6 md:w-7 md:h-7 lg:w-9 lg:h-9 object-contain drop-shadow-lg"
-                animate={{
-                  scale: isHovered ? 1.1 : 1
-                }}
+                animate={{ scale: isHovered ? 1.1 : 1 }}
                 transition={{ duration: 0.3 }}
               />
             ) : (
@@ -188,7 +339,6 @@ const SkillPlanet = ({
             )}
           </div>
 
-          {/* Level badge - Responsive */}
           {isHovered && (
             <motion.div
               className="absolute -bottom-1 -right-1 w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg border-2 border-slate-900"
@@ -200,91 +350,64 @@ const SkillPlanet = ({
             </motion.div>
           )}
         </div>
-
-        {/* Premium Tooltip - Desktop only */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              initial={{ opacity: 0, y: 15, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 15, scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className="absolute left-1/2 -translate-x-1/2 top-full mt-4 z-[200] hidden lg:block"
-            >
-              <div className="relative">
-                {/* Arrow */}
-                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 bg-slate-800/95 border-l border-t border-slate-700/50" />
-
-                {/* Tooltip content */}
-                <div className="relative bg-slate-800/95 backdrop-blur-xl rounded-2xl p-5 min-w-[240px] border border-slate-700/50 shadow-[0_24px_64px_rgba(0,0,0,0.6)]">
-                  {/* Glow effect */}
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${gradient} opacity-5`} />
-
-                  {/* Header */}
-                  <div className="flex items-center gap-3 mb-4 relative z-10">
-                    {skill.logo && (
-                      <div className="w-11 h-11 rounded-xl bg-slate-700/50 p-2.5 flex items-center justify-center ring-1 ring-slate-600/30">
-                        <img src={skill.logo} alt="" className="w-full h-full object-contain" />
-                      </div>
-                    )}
-                    <div>
-                      <h4 className="text-base font-bold text-white">{skill.name}</h4>
-                      <div className="flex items-center gap-1 mt-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`w-3 h-3 ${i < Math.floor(skill.level / 20) ? 'text-yellow-400 fill-yellow-400' : 'text-slate-600'}`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Progress */}
-                  <div className="mb-4 relative z-10">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-xs text-slate-400 font-medium">Proficiency</span>
-                      <span className="text-sm font-bold text-blue-400">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-slate-700/50 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: `${skill.level}%` }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="h-full rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Stats grid */}
-                  <div className="grid grid-cols-2 gap-3 relative z-10">
-                    <div className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-700/30 border border-slate-600/20">
-                      <Clock className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                      <div className="min-w-0">
-                        <p className="text-xs text-slate-400">Experience</p>
-                        <p className="text-sm font-semibold text-white">{skill.years} Years</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-700/30 border border-slate-600/20">
-                      <Briefcase className="w-4 h-4 text-purple-400 flex-shrink-0" />
-                      <div className="min-w-0">
-                        <p className="text-xs text-slate-400">Projects</p>
-                        <p className="text-sm font-semibold text-white">{skill.projects}+</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.div>
     </motion.div>
   );
 };
 
 // ============================================
-// CENTRAL HUB - MOBILE/TABLET/DESKTOP
+// PREMIUM ORBIT VIEW
+// ============================================
+const PremiumOrbitView = ({ category, onHoverSkill, onSkillClick }: any) => {
+  const [rotationAngle, setRotationAngle] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [hoveredSkill, setHoveredSkill] = useState<any>(null);
+
+  const orbitRadius = typeof window !== 'undefined'
+    ? window.innerWidth < 768 ? 75 : window.innerWidth < 1024 ? 110 : 160
+    : 110;
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setRotationAngle((prev) => (prev + 0.5) % 360);
+    }, 16);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handleSkillHover = (skill: any) => {
+    setHoveredSkill(skill);
+    onHoverSkill(skill);
+    if (skill) {
+      setIsPaused(true);
+    } else {
+      setIsPaused(false);
+    }
+  };
+
+  return (
+    <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px]">
+      <OrbitRings />
+      <PremiumCentralHub category={category} hoveredSkill={hoveredSkill} isPaused={isPaused} />
+      {category.skills.map((skill: any, index: number) => (
+        <SkillPlanet
+          key={skill.name}
+          skill={skill}
+          index={index}
+          totalSkills={category.skills.length}
+          onHover={handleSkillHover}
+          onClick={onSkillClick}
+          gradient={category.gradient}
+          orbitRadius={orbitRadius}
+          rotationAngle={rotationAngle}
+        />
+      ))}
+    </div>
+  );
+};
+
+// ============================================
+// CENTRAL HUB
 // ============================================
 const PremiumCentralHub = ({ category, hoveredSkill, isPaused }: any) => {
   return (
@@ -298,21 +421,17 @@ const PremiumCentralHub = ({ category, hoveredSkill, isPaused }: any) => {
           transition={{ duration: 0.3 }}
           className="relative"
         >
-          {/* Glow layer - Responsive */}
           <div className={`absolute -inset-6 md:-inset-8 lg:-inset-10 rounded-full bg-gradient-to-r ${category.gradient} opacity-15 blur-2xl md:blur-3xl`} />
 
-          {/* Main hub - Mobile: 100px, Tablet: 140px, Desktop: 200px */}
           <div className={`
             relative w-[100px] h-[100px] md:w-[140px] md:h-[140px] lg:w-[200px] lg:h-[200px] rounded-full
             bg-gradient-to-br ${category.gradient} p-[2px] md:p-[3px]
             shadow-[0_0_40px_-15px_rgba(59,130,246,0.5)] md:shadow-[0_0_60px_-20px_rgba(59,130,246,0.5)] lg:shadow-[0_0_80px_-20px_rgba(59,130,246,0.5)]
           `}>
             <div className="w-full h-full rounded-full bg-slate-900/95 backdrop-blur-xl flex flex-col items-center justify-center relative overflow-hidden">
-              {/* Inner effects */}
               <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-5`} />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
 
-              {/* Content - Responsive */}
               <div className="relative z-10 text-center px-2 md:px-3 lg:px-4">
                 {hoveredSkill ? (
                   <motion.div
@@ -350,7 +469,6 @@ const PremiumCentralHub = ({ category, hoveredSkill, isPaused }: any) => {
                     <h3 className="text-sm md:text-lg lg:text-2xl font-bold text-white mb-0.5 md:mb-1 lg:mb-2">{category.title}</h3>
                     <p className="text-[10px] md:text-xs lg:text-sm text-slate-400">{category.skills.length} Technologies</p>
 
-                    {/* Pause indicator - Desktop only */}
                     {isPaused && (
                       <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -373,15 +491,12 @@ const PremiumCentralHub = ({ category, hoveredSkill, isPaused }: any) => {
 };
 
 // ============================================
-// ORBIT RINGS - RESPONSIVE
+// ORBIT RINGS
 // ============================================
 const OrbitRings = () => {
   return (
     <>
-      {/* Main orbit path */}
       <div className="absolute inset-[15%] rounded-full border border-dashed md:border-2 border-blue-500/10" />
-
-      {/* Secondary orbits */}
       <div className="absolute inset-[25%] rounded-full border border-purple-500/5" />
       <div className="absolute inset-[35%] rounded-full border border-cyan-500/5" />
     </>
@@ -389,7 +504,7 @@ const OrbitRings = () => {
 };
 
 // ============================================
-// CATEGORY CARD - MOBILE/TABLET/DESKTOP
+// CATEGORY CARD
 // ============================================
 const CategoryCard = ({ category, isActive, onClick, index }: any) => {
   return (
@@ -409,7 +524,6 @@ const CategoryCard = ({ category, isActive, onClick, index }: any) => {
         }
       `}
     >
-      {/* Active indicator line */}
       {isActive && (
         <motion.div
           layoutId="activeCategoryLine"
@@ -419,29 +533,20 @@ const CategoryCard = ({ category, isActive, onClick, index }: any) => {
       )}
 
       <div className="flex items-center gap-2.5 md:gap-3 lg:gap-4">
-        {/* Icon container - Mobile: 40px, Tablet: 44px, Desktop: 48px */}
         <div className={`
           w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-lg md:rounded-xl 
           flex items-center justify-center transition-all duration-300 flex-shrink-0
-          ${isActive
-            ? 'bg-white/20'
-            : 'bg-slate-700/50 group-hover:bg-blue-500/20'
-          }
+          ${isActive ? 'bg-white/20' : 'bg-slate-700/50 group-hover:bg-blue-500/20'}
         `}>
-          <category.icon
-            className={`w-5 h-5 md:w-5.5 md:h-5.5 lg:w-6 lg:h-6 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-blue-400'}`}
-          />
+          <category.icon className={`w-5 h-5 md:w-5.5 md:h-5.5 lg:w-6 lg:h-6 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-blue-400'}`} />
         </div>
 
-        {/* Text content - Responsive */}
         <div className="flex-1 min-w-0">
-          <h4 className={`text-sm md:text-base font-bold transition-colors duration-300 truncate ${isActive ? 'text-white' : 'text-slate-200 group-hover:text-white'
-            }`}>
+          <h4 className={`text-sm md:text-base font-bold transition-colors duration-300 truncate ${isActive ? 'text-white' : 'text-slate-200 group-hover:text-white'}`}>
             {category.title}
           </h4>
           <div className="flex items-center gap-1.5 md:gap-2 mt-0.5 md:mt-1">
-            <span className={`text-xs md:text-sm transition-colors duration-300 ${isActive ? 'text-white/80' : 'text-slate-500'
-              }`}>
+            <span className={`text-xs md:text-sm transition-colors duration-300 ${isActive ? 'text-white/80' : 'text-slate-500'}`}>
               {category.skills.length} skills
             </span>
             {isActive && (
@@ -457,24 +562,17 @@ const CategoryCard = ({ category, isActive, onClick, index }: any) => {
           </div>
         </div>
 
-        {/* Arrow */}
         <ChevronRight className={`w-4 h-4 md:w-5 md:h-5 transition-all duration-300 flex-shrink-0 ${isActive
-            ? 'text-white translate-x-0.5 md:translate-x-1'
-            : 'text-slate-600 group-hover:text-slate-400 group-hover:translate-x-0.5 md:group-hover:translate-x-1'
+          ? 'text-white translate-x-0.5 md:translate-x-1'
+          : 'text-slate-600 group-hover:text-slate-400 group-hover:translate-x-0.5 md:group-hover:translate-x-1'
           }`} />
       </div>
 
-      {/* Skill preview dots - Tablet and Desktop only */}
       {!isActive && (
         <div className="hidden md:flex gap-1 mt-2.5 md:mt-3 ml-12 md:ml-14">
           {category.skills.slice(0, 6).map((skill: any, i: number) => (
-            <div
-              key={i}
-              className="w-5 h-5 md:w-6 md:h-6 rounded-md md:rounded-lg bg-slate-700/50 border border-slate-600/30 overflow-hidden"
-            >
-              {skill.logo && (
-                <img src={skill.logo} alt="" className="w-full h-full object-contain p-0.5 md:p-1 opacity-60" />
-              )}
+            <div key={i} className="w-5 h-5 md:w-6 md:h-6 rounded-md md:rounded-lg bg-slate-700/50 border border-slate-600/30 overflow-hidden">
+              {skill.logo && <img src={skill.logo} alt="" className="w-full h-full object-contain p-0.5 md:p-1 opacity-60" />}
             </div>
           ))}
           {category.skills.length > 6 && (
@@ -489,7 +587,7 @@ const CategoryCard = ({ category, isActive, onClick, index }: any) => {
 };
 
 // ============================================
-// STATS DASHBOARD - MOBILE/TABLET/DESKTOP
+// STATS DASHBOARD - COMPACT VERSION
 // ============================================
 const StatsDashboard = ({ category }: any) => {
   const stats = useMemo(() => {
@@ -509,7 +607,7 @@ const StatsDashboard = ({ category }: any) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-3 lg:gap-4"
+      className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-2.5"
     >
       {stats.map((stat, index) => (
         <motion.div
@@ -521,25 +619,20 @@ const StatsDashboard = ({ category }: any) => {
           className="group relative"
         >
           <div className={`
-            relative p-3 md:p-4 lg:p-5 rounded-xl md:rounded-2xl backdrop-blur-xl border border-slate-700/50
+            relative p-3 md:p-3.5 rounded-xl backdrop-blur-xl border border-slate-700/50
             bg-slate-800/40 hover:bg-slate-800/60 hover:border-blue-500/30
             transition-all duration-300 overflow-hidden
           `}>
-            {/* Background glow */}
             <div className={`absolute inset-0 ${stat.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 
-            {/* Icon - Mobile: 32px, Tablet: 36px, Desktop: 40px */}
-            <div className={`relative z-10 w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 rounded-lg md:rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-2 md:mb-2.5 lg:mb-3 shadow-lg`}>
-              <stat.icon className="w-4 h-4 md:w-4.5 md:h-4.5 lg:w-5 lg:h-5 text-white" />
+            <div className={`relative z-10 w-7 h-7 md:w-8 md:h-8 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center mb-2 shadow-lg`}>
+              <stat.icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
             </div>
 
-            {/* Value - Responsive */}
-            <p className={`relative z-10 font-bold text-white mb-0.5 md:mb-1 ${stat.small ? 'text-base md:text-lg truncate' : 'text-lg md:text-xl lg:text-2xl'}`}>
+            <p className={`relative z-10 font-bold text-white mb-0.5 ${stat.small ? 'text-base md:text-lg truncate' : 'text-lg md:text-xl'}`}>
               {stat.value}
             </p>
-
-            {/* Label - Responsive */}
-            <p className="relative z-10 text-xs md:text-sm text-slate-400">{stat.label}</p>
+            <p className="relative z-10 text-xs text-slate-400">{stat.label}</p>
           </div>
         </motion.div>
       ))}
@@ -548,7 +641,7 @@ const StatsDashboard = ({ category }: any) => {
 };
 
 // ============================================
-// GRID VIEW - MOBILE/TABLET/DESKTOP
+// GRID VIEW
 // ============================================
 const SkillsGridView = ({ skills, gradient }: any) => {
   return (
@@ -568,10 +661,8 @@ const SkillsGridView = ({ skills, gradient }: any) => {
           className="group"
         >
           <div className="relative p-3 md:p-3.5 lg:p-4 rounded-xl md:rounded-2xl bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 hover:border-blue-500/30 hover:bg-slate-800/60 transition-all duration-300 text-center">
-            {/* Glow effect */}
             <div className={`absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
 
-            {/* Logo - Mobile: 32px, Tablet: 36px, Desktop: 40px */}
             <div className="relative z-10 mb-2 md:mb-2.5 lg:mb-3">
               {skill.logo ? (
                 <img
@@ -586,12 +677,10 @@ const SkillsGridView = ({ skills, gradient }: any) => {
               )}
             </div>
 
-            {/* Name - Responsive */}
             <h5 className="relative z-10 text-[10px] md:text-xs font-medium text-slate-300 group-hover:text-white transition-colors truncate mb-1.5 md:mb-2">
               {skill.name}
             </h5>
 
-            {/* Progress - Responsive */}
             <div className="relative z-10 h-0.5 md:h-1 bg-slate-700/50 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
@@ -609,22 +698,15 @@ const SkillsGridView = ({ skills, gradient }: any) => {
 };
 
 // ============================================
-// CONTROL BAR - MOBILE/TABLET/DESKTOP
+// CONTROL BAR
 // ============================================
-const ControlBar = ({
-  isPlaying,
-  onTogglePlay,
-  onReset,
-  viewMode,
-  onViewModeChange
-}: any) => {
+const ControlBar = ({ isPlaying, onTogglePlay, onReset, viewMode, onViewModeChange }: any) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex flex-wrap items-center justify-center gap-2 md:gap-2.5 lg:gap-3"
+      className="flex flex-wrap items-center justify-center gap-2 md:gap-2.5"
     >
-      {/* View toggle - Responsive */}
       <div className="flex items-center p-0.5 md:p-1 rounded-lg md:rounded-xl bg-slate-800/60 backdrop-blur-xl border border-slate-700/50">
         {[
           { id: 'orbit', icon: Orbit, label: 'Orbit' },
@@ -647,7 +729,6 @@ const ControlBar = ({
         ))}
       </div>
 
-      {/* Playback controls - Responsive */}
       {viewMode === 'orbit' && (
         <div className="flex items-center gap-1.5 md:gap-2 p-0.5 md:p-1 rounded-lg md:rounded-xl bg-slate-800/60 backdrop-blur-xl border border-slate-700/50">
           <button
@@ -673,7 +754,6 @@ const ControlBar = ({
         </div>
       )}
 
-      {/* Status indicator - Responsive */}
       <div className="flex items-center gap-1.5 md:gap-2 px-3 md:px-3.5 lg:px-4 py-1.5 md:py-2 rounded-lg md:rounded-xl bg-slate-800/60 backdrop-blur-xl border border-slate-700/50">
         <span className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${isPlaying ? 'bg-green-400 animate-pulse' : 'bg-slate-500'}`} />
         <span className="text-xs md:text-sm text-slate-400 hidden sm:inline">
@@ -685,96 +765,87 @@ const ControlBar = ({
 };
 
 // ============================================
-// MAIN SKILLS COMPONENT - FULLY RESPONSIVE
+// MAIN SKILLS COMPONENT - COMPACT HEADER
 // ============================================
 export default function Skills() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   const [hoveredSkill, setHoveredSkill] = useState<any>(null);
+  const [selectedSkill, setSelectedSkill] = useState<any>(null);
   const [viewMode, setViewMode] = useState<'orbit' | 'grid'>('orbit');
   const [rotationAngle, setRotationAngle] = useState(0);
 
   const activeCategory = skillsData.categories[activeCategoryIndex];
 
-  // Optimized rotation
   useEffect(() => {
     if (!isPlaying || isPaused || viewMode !== 'orbit') return;
-
     const interval = setInterval(() => {
       setRotationAngle((prev) => (prev + 0.5) % 360);
     }, 16);
-
     return () => clearInterval(interval);
   }, [isPlaying, isPaused, viewMode]);
 
-  // Auto-rotate categories
   useEffect(() => {
     if (!isPlaying) return;
     const interval = setInterval(() => {
       setActiveCategoryIndex((prev) => (prev + 1) % skillsData.categories.length);
+      setSelectedSkill(null);
     }, 10000);
     return () => clearInterval(interval);
   }, [isPlaying]);
 
   const handleCategorySelect = (index: number) => {
     setActiveCategoryIndex(index);
+    setSelectedSkill(null);
   };
 
   const handleReset = () => {
     setActiveCategoryIndex(0);
     setRotationAngle(0);
     setIsPlaying(true);
+    setSelectedSkill(null);
   };
 
-  // Responsive orbit radius - Mobile: 75px, Tablet: 110px, Desktop: 160px
-  const orbitRadius = typeof window !== 'undefined'
-    ? window.innerWidth < 768 ? 75 : window.innerWidth < 1024 ? 110 : 160
-    : 110;
+  const handleSkillClick = (skill: any) => {
+    setSelectedSkill(skill);
+  };
 
   return (
-    <section
-      id="skills"
-      className="relative py-12 md:py-20 lg:py-32 overflow-hidden min-h-screen"
-    >
-      {/* Premium Background */}
+    <section id="skills" className="relative py-10 md:py-16 lg:py-24 overflow-hidden min-h-screen">
       <PremiumBackground />
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-
-        {/* Section Header - Responsive */}
+        {/* COMPACT HEADER SECTION */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 md:mb-16 lg:mb-20"
+          className="text-center mb-8 md:mb-12 lg:mb-14"
         >
-          {/* Premium badge - Responsive */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 md:gap-2.5 lg:gap-3 px-3.5 md:px-4 lg:px-5 py-2 md:py-2.5 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 mb-5 md:mb-6 lg:mb-8 backdrop-blur-xl"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 mb-4 backdrop-blur-xl"
           >
-            <Sparkles className="w-4 h-4 md:w-4.5 md:h-4.5 lg:w-5 lg:h-5 text-blue-400" />
+            <Sparkles className="w-4 h-4 text-blue-400" />
             <span className="text-xs md:text-sm font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Technical Excellence
             </span>
           </motion.div>
 
-          {/* Title - Mobile: 2xl, Tablet: 4xl, Desktop: 7xl */}
-          <h2 className="text-2xl md:text-4xl lg:text-5xl xl:text-7xl font-black mb-3 md:mb-4 lg:mb-6 leading-tight px-2 md:px-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 md:mb-3 leading-tight px-2">
             <span className="text-white">My Professional</span>
             <br />
-            <span className="relative inline-block mt-1 md:mt-2">
+            <span className="relative inline-block mt-1">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
                 Tech Stack
               </span>
-              {/* Animated underline - Responsive */}
               <motion.div
-                className="absolute -bottom-0.5 md:-bottom-1 lg:-bottom-2 left-0 right-0 h-0.5 md:h-1 lg:h-1.5 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500"
+                className="absolute -bottom-1 left-0 right-0 h-0.5 md:h-1 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -783,15 +854,13 @@ export default function Skills() {
             </span>
           </h2>
 
-          {/* Description - Responsive */}
-          <p className="text-xs md:text-base lg:text-lg xl:text-xl text-slate-400 leading-relaxed max-w-3xl mx-auto px-4">
+          <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto px-4">
             Explore my technical universe through an interactive visualization.
             Each technology represents years of learning and application.
           </p>
         </motion.div>
 
-        {/* Control Bar - Responsive */}
-        <div className="mb-6 md:mb-10 lg:mb-12">
+        <div className="mb-5 md:mb-8">
           <ControlBar
             isPlaying={isPlaying}
             onTogglePlay={() => setIsPlaying(!isPlaying)}
@@ -801,282 +870,57 @@ export default function Skills() {
           />
         </div>
 
-        {/* Main Content - Responsive Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-5 md:gap-8 lg:gap-12 mb-10 md:mb-14 lg:mb-16">
-
-          {/* Category Sidebar - Responsive */}
-          <div className="xl:sticky xl:top-8 xl:self-start">
-            <motion.h3
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2.5 md:mb-3 lg:mb-4 px-2"
-            >
-              Categories
-            </motion.h3>
-            <div className="flex xl:flex-col gap-2 md:gap-2.5 lg:gap-3 overflow-x-auto xl:overflow-visible pb-3 md:pb-4 xl:pb-0 scrollbar-hide snap-x snap-mandatory xl:snap-none">
-              {skillsData.categories.map((category, index) => (
-                <div key={category.id} className="flex-shrink-0 xl:flex-shrink snap-start">
-                  <CategoryCard
-                    category={category}
-                    isActive={activeCategoryIndex === index}
-                    onClick={() => handleCategorySelect(index)}
-                    index={index}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Visualization Area - Responsive */}
-          <div>
-            {/* Stats Dashboard - Responsive */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeCategory.id + '-stats'}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="mb-6 md:mb-8 lg:mb-10"
-              >
-                <StatsDashboard category={activeCategory} />
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Orbit or Grid View - Responsive */}
-            <AnimatePresence mode="wait">
-              {viewMode === 'orbit' ? (
-                <motion.div
-                  key="orbit-view"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="relative"
-                >
-                  {/* Orbit container - Mobile: 280px, Tablet: 400px, Desktop: 550px */}
-                  <div
-                    className="relative w-full max-w-[280px] md:max-w-[400px] lg:max-w-[550px] mx-auto aspect-square"
-                    onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}
-                  >
-                    {/* Orbit rings */}
-                    <OrbitRings />
-
-                    {/* Central Hub */}
-                    <PremiumCentralHub
-                      category={activeCategory}
-                      hoveredSkill={hoveredSkill}
-                      isPaused={isPaused}
-                    />
-
-                    {/* Orbiting Skills */}
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={activeCategory.id}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="absolute inset-0"
-                      >
-                        {activeCategory.skills.map((skill: any, index: number) => (
-                          <SkillPlanet
-                            key={skill.name}
-                            skill={skill}
-                            index={index}
-                            totalSkills={activeCategory.skills.length}
-                            onHover={setHoveredSkill}
-                            gradient={activeCategory.gradient}
-                            orbitRadius={orbitRadius}
-                            rotationAngle={rotationAngle}
-                          />
-                        ))}
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-
-                  {/* Interaction hint - Responsive */}
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
-                    className="text-center text-xs md:text-sm text-slate-500 mt-5 md:mt-6 lg:mt-8 px-4"
-                  >
-                    <Eye className="w-3 h-3 md:w-4 md:h-4 inline mr-1.5 md:mr-2" />
-                    <span className="hidden md:inline">Hover over skills to explore • Move mouse over the orbit to pause</span>
-                    <span className="md:hidden">Tap skills to explore details</span>
-                  </motion.p>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="grid-view"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <SkillsGridView
-                    skills={activeCategory.skills}
-                    gradient={activeCategory.gradient}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* Bottom Section - Currently Learning - Responsive */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center pt-10 md:pt-14 lg:pt-16 border-t border-slate-800/50"
-        >
-          <div className="inline-flex items-center gap-1.5 md:gap-2 px-3 md:px-3.5 lg:px-4 py-1.5 md:py-2 rounded-full bg-gradient-to-r from-orange-500/10 to-yellow-500/10 border border-orange-500/20 mb-4 md:mb-5 lg:mb-6">
-            <Flame className="w-3.5 h-3.5 md:w-4 md:h-4 text-orange-400" />
-            <span className="text-xs md:text-sm font-medium text-orange-400">Currently Learning</span>
-          </div>
-
-          {/* Learning tags - Responsive */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-2.5 lg:gap-3 max-w-3xl mx-auto px-4">
-            {['Next.js 15', 'AI/ML', 'Rust', 'Web3', 'System Design', 'Cloud'].map((tech, index) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="group px-3 md:px-4 lg:px-5 py-2 md:py-2.5 rounded-full bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 hover:border-orange-500/30 hover:bg-slate-800/60 transition-all duration-300 cursor-default"
-              >
-                <span className="text-xs md:text-sm text-slate-300 group-hover:text-orange-400 transition-colors">
-                  <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4 inline mr-1 md:mr-1.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {tech}
-                </span>
-              </motion.span>
+        <div className="grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-5 md:gap-8 lg:gap-10 mb-8 md:mb-12">
+          <div className="flex xl:flex-col gap-3 overflow-x-auto xl:overflow-x-visible pb-2 xl:pb-0 scrollbar-hide">
+            {skillsData.categories.map((category, index) => (
+              <CategoryCard
+                key={category.id}
+                category={category}
+                isActive={activeCategoryIndex === index}
+                onClick={() => handleCategorySelect(index)}
+                index={index}
+              />
             ))}
           </div>
-        </motion.div>
-      </div>
 
-      {/* Keyframes */}
-      <style>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
+          <div className="space-y-5 md:space-y-6">
+            <StatsDashboard category={activeCategory} />
+
+            {viewMode === 'orbit' ? (
+              <div className="flex flex-col lg:flex-row gap-5 lg:gap-6">
+                <div
+                  className="flex-1"
+                  onMouseEnter={() => setIsPaused(true)}
+                  onMouseLeave={() => setIsPaused(false)}
+                >
+                  <PremiumOrbitView
+                    category={activeCategory}
+                    onHoverSkill={setHoveredSkill}
+                    onSkillClick={handleSkillClick}
+                  />
+
+                  <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2 text-xs text-slate-500">
+                    <div className="hidden md:flex items-center gap-2">
+                      <MousePointer2 className="w-3.5 h-3.5" />
+                      <span>Click skills to view details • Hover to pause</span>
+                    </div>
+                    <div className="flex md:hidden items-center gap-2">
+                      <MousePointer2 className="w-3.5 h-3.5" />
+                      <span>Tap skills to view details</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:w-[340px] xl:w-[380px]">
+                  <SkillDetailsPanel skill={selectedSkill} category={activeCategory} />
+                </div>
+              </div>
+            ) : (
+              <SkillsGridView skills={activeCategory.skills} gradient={activeCategory.gradient} />
+            )}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
-
-
-
-
-
-
-
-// import { useState } from 'react';
-// import { skillsData } from '../data/portfolio';
-
-// export default function Skills() {
-//   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
-
-//   return (
-//     <section id="skills" className="relative py-20 lg:py-32 bg-transparent overflow-hidden">
-//       {/* Background Elements Removed to show global fixed background */}
-
-//       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-//         {/* Section Header */}
-//         <div className="max-w-4xl mx-auto text-center mb-16 lg:mb-24">
-//           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight">
-//             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5AA8D6] to-[#3066be]">
-//               Technical Arsenal
-//             </span>
-//           </h2>
-//           <p className="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
-//             A comprehensive overview of my technical skills and proficiency levels across different domains of software development.
-//           </p>
-//         </div>
-
-//         {/* Bento Grid Layout */}
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-7xl mx-auto">
-//           {skillsData.categories.map((category) => {
-//             const Icon = category.icon;
-//             const isHovered = hoveredCategory === category.id;
-
-//             return (
-//               <div
-//                 key={category.id}
-//                 onMouseEnter={() => setHoveredCategory(category.id)}
-//                 onMouseLeave={() => setHoveredCategory(null)}
-//                 className={`relative group p-6 lg:p-8 bg-[#0a0e1a]/80 backdrop-blur-sm border border-[#1a1f35] rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#3066be]/30 ${category.size}`}
-//               >
-//                 {/* Background Gradient */}
-//                 <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-
-//                 {/* Content */}
-//                 <div className="relative z-10 h-full flex flex-col">
-//                   {/* Header */}
-//                   <div className="flex items-start justify-between mb-6">
-//                     <div className={`p-3 rounded-xl bg-gradient-to-br ${category.gradient} bg-opacity-10 group-hover:scale-110 transition-transform duration-300`}>
-//                       <Icon size={category.iconSize / 2} className="text-white" />
-//                     </div>
-//                     <div className="text-xs font-mono text-slate-500 bg-[#131c80]/10 px-2 py-1 rounded border border-[#131c80]/20">
-//                       {category.skills.length} Skills
-//                     </div>
-//                   </div>
-
-//                   {/* Title */}
-//                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#5AA8D6] transition-colors">
-//                     {category.title}
-//                   </h3>
-
-//                   {/* Skills List */}
-//                   <div className="space-y-4 mt-auto">
-//                     {category.skills.map((skill, idx) => (
-//                       <div key={idx} className="space-y-1.5">
-//                         <div className="flex justify-between text-sm">
-//                           <span className="text-slate-300 font-medium">{skill.name}</span>
-//                           <span className="text-slate-500 text-xs">{skill.level}%</span>
-//                         </div>
-//                         <div className="h-1.5 w-full bg-[#1a1f35] rounded-full overflow-hidden">
-//                           <div
-//                             className={`h-full rounded-full bg-gradient-to-r ${category.gradient} transform origin-left transition-transform duration-1000 ease-out`}
-//                             style={{
-//                               width: `${skill.level}%`,
-//                               transform: isHovered ? 'scaleX(1)' : 'scaleX(0)'
-//                             }}
-//                           />
-//                         </div>
-//                         <div className="flex justify-between text-[10px] text-slate-500 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-//                           <span>{skill.years}y exp</span>
-//                           <span>{skill.projects} projects</span>
-//                         </div>
-//                       </div>
-//                     ))}
-//                   </div>
-//                 </div>
-//               </div>
-//             );
-//           })}
-//         </div>
-
-//         {/* Bottom Stats */}
-//         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-8 border-t border-[#1a1f35] pt-12">
-//           {skillsData.radar.slice(0, 4).map((stat, index) => (
-//             <div key={index} className="text-center space-y-2">
-//               <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-br from-[#5AA8D6] to-[#3066be]">
-//                 {stat.level}%
-//               </div>
-//               <div className="text-sm font-medium text-slate-400 uppercase tracking-wider">
-//                 {stat.name}
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
