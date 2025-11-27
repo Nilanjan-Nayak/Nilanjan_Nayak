@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
 import DreamProject from './components/DreamProject';
@@ -7,7 +7,7 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Navigation from './components/Navigation';
 import WelcomeScreen from './components/WelcomeScreen';
-import SplashCursor from './components/SplashCursor';
+// import SplashCursor from './components/SplashCursor';
 import { personalInfo } from './data/portfolio';
 
 function App() {
@@ -17,9 +17,69 @@ function App() {
     setShowWelcome(false);
   };
 
+  // ✅ RIGHT-CLICK PROTECTION - Disable context menu & inspection
+  useEffect(() => {
+    const handleContextMenu = (e: Event) => {
+      e.preventDefault();
+      return false;
+    };
+
+    const handleKeyDown = (e: Event) => {
+      const keyEvent = e as KeyboardEvent;
+      // Disable F12, Ctrl+Shift+I (DevTools), Ctrl+Shift+C (Inspector), Ctrl+Shift+K (Console)
+      if (
+        keyEvent.key === 'F12' ||
+        (keyEvent.ctrlKey && keyEvent.shiftKey && (keyEvent.key === 'I' || keyEvent.key === 'i')) ||
+        (keyEvent.ctrlKey && keyEvent.shiftKey && (keyEvent.key === 'C' || keyEvent.key === 'c')) ||
+        (keyEvent.ctrlKey && keyEvent.shiftKey && (keyEvent.key === 'K' || keyEvent.key === 'k')) ||
+        (keyEvent.ctrlKey && keyEvent.shiftKey && (keyEvent.key === 'J' || keyEvent.key === 'j')) ||
+        (keyEvent.ctrlKey && (keyEvent.key === 'U' || keyEvent.key === 'u'))
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    // Disable dragging images
+    const handleDragStart = (e: Event) => {
+      e.preventDefault();
+      return false;
+    };
+
+    // Disable copy on images
+    const handleCopy = (e: Event) => {
+      const selection = window.getSelection();
+      if (selection && selection.toString().length === 0) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    // Add event listeners
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('dragstart', handleDragStart);
+    document.addEventListener('copy', handleCopy);
+
+    // Disable right-click on images specifically
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('contextmenu', handleContextMenu);
+      img.addEventListener('dragstart', handleDragStart);
+      img.style.userSelect = 'none';
+      (img.style as any).webkitUserSelect = 'none';
+    });
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('dragstart', handleDragStart);
+      document.removeEventListener('copy', handleCopy);
+    };
+  }, []);
+
   return (
     <>
-      <SplashCursor />
+      {/* <SplashCursor /> */}
       <WelcomeScreen onLoadingComplete={handleLoadingComplete} />
       {!showWelcome && (
         <div className="relative min-h-screen bg-[#0A0118] text-slate-50 selection:bg-[#8B5CF6]/30 selection:text-white">

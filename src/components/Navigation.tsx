@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Home, User, Briefcase, Code2, Send, Sparkles } from 'lucide-react';
 import { navItems, personalInfo } from '../data/portfolio';
-import logoImg from '../image/—Pngtree—n circle letter initial logo_4835121_processed.png';
+import logoImg from '../image/Nilanjan.png';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);

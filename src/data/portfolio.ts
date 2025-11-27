@@ -13,13 +13,13 @@ import {
 } from 'lucide-react';
 
 import profileImg from '../image/IMG-20251021-WA0067.jpg';
-import dreamProjectImg from '../image/Screenshot 2025-08-16 234248.png';
+
 
 // ============================================================================
 // PERSONAL INFORMATION - Basic profile details and social links
 // ============================================================================
 export const personalInfo = {
-    name:        "Nilanjan",
+    name:        "Nilanjan Nayak",
     role:        "Full Stack Developer / Coder",
     shortRole:   "Dev",
     location:    "Bishnupur, West Bengal, India",
@@ -54,7 +54,7 @@ export const heroData = {
             name: "Star Ai lab",
             tech: "React + AI",
             year: "2024",
-            image: "/images/—Pngtree—n circle letter initial logo_4835121_processed.png"
+            image: "../image/Nilanjan.png"
         },
         {
             name: "Carrrerkick",
@@ -94,7 +94,8 @@ export const aboutData = {
     summary: {
         text: [
             "I am a passionate Full Stack Developer and Diploma student in Computer Science at Uluberia Government Polytechnic (WBSCTE). My journey is defined by a relentless curiosity for technology.",
-            "With a strong foundation in Python, React, Node.js, JavaScript, and Web Technologies, I specialize in building data-driven applications and immersive web experiences. I am constantly exploring Generative AI and Data Structures to push the boundaries of what's possible."
+            "With a strong foundation in Python, React, Node.js, JavaScript, and Web Technologies, I specialize in building data-driven applications and immersive web experiences. I am constantly exploring Generative AI and Data Structures to push the boundaries of what's possible.",
+            "I possess the ability to develop innovative solutions utilizing artificial intelligence, and I am committed to initiating projects in the future that harness AI to deliver substantial value and positive impact for a broad audience. My aspiration is to create advancements whose contributions will be significant and widely beneficial."
         ],
         coreCompetencies: [
             "Full Stack Development",
@@ -257,66 +258,68 @@ export const aboutData = {
 // ============================================================================
 export const dreamProjectData = {
     title:       "Star AI Lab",
-    description: "A revolutionary platform that integrates IoT, AI, and blockchain to create intelligent, sustainable, and connected urban environments. This project represents the convergence of cutting-edge technologies to solve real-world challenges.",
+    description: "The primary purpose of this website is to showcase my personal projects by sharing their GitHub repositories and related links in one place. In addition, the site is designed to introduce practical AI-powered features that people can easily use in their daily lives, making common tasks more efficient and accessible for both users and visitors.",
     vision:      "To transform urban living by creating self-optimizing cities that enhance quality of life, reduce environmental impact, and foster innovation through data-driven decision making.",
     category:    "Website Based Project",
     status:      "In Development",
-    image:       dreamProjectImg,
+    image:       "src/image/Screenshot 2025-11-27 141956.png",
 
     // Quick stats displayed prominently
     quickStats: [
         { value: "Trail Mode ", label: "Users" },
         { value: "1+",          label: "Modules" },
-        { value: "99.9%",       label: "Uptime" }
+        { value: "4+",       label: "Projects Available" }
     ],
 
     // Key features
     keyFeatures: [
-        "Real-time Traffic Optimization",
-        "Smart Energy Management",
-        "Predictive Maintenance",
-        "Citizen Engagement Portal",
-        "Environmental Monitoring",
+        "Intelligent Project Showcase",
+        "Automatic Detection: - Session-based visitor identification",
+        "Advanced UI/UX Features",
+        "Performance Optimizations",
+        "Authentication & Security",
         "Emergency Response System"
     ],
 
     // Technology stack
     techStack: [
-        "React",
+        "React 18.3.1",
+        "TypeScript 5.5.3",
+        "Vite 5.4.2",
+        "React Router DOM 6.20.1",
+        "Tailwind CSS 3.4.17",
+        "PostCSS",
+        "Autoprefixer",
+        "Lucide React",
+        "MongoDB",
+        "Mongoose",
+        "Express.js",
         "Node.js",
-        "Python",
-        "TensorFlow",
-        "Blockchain",
-        "IoT",
-        "AWS",
-        "Kubernetes",
-        "GraphQL",
-        "PostgreSQL"
+        "Nodemon",
+        "Etc.",
     ],
 
     // Expected impact
     impact: [
         "Reduce city energy consumption by 30% through AI-driven optimization",
         "Decrease traffic congestion by 40% with predictive routing algorithms",
-        "Improve emergency response times by 50% using real-time data analytics",
-        "Enable data-driven policy making for sustainable urban development"
     ],
 
     // Timeline
     timeline: {
-        start: "Jan 2024",
-        end:   "Dec 2025"
+        start: "Jan 2025",
+        end:   "I was Apparing for this "
     },
 
     // Team information
     teamSize: "Me only",
 
     // Progress percentage
-    progress: 20,
+    progress: 35,
 
     // Links
     liveUrl:       "https://smartcity-demo.example.com",
-    githubUrl:     "https://github.com/username/smart-city-platform"
+    githubUrl:     ""
 };
 
 // ============================================================================
@@ -347,17 +350,17 @@ export interface Project {
 
 export const projectsData: Project[] = [
     {
-        title:       "Star Ai lab",
-        description: "An innovative website project focusing on AI integration and modern web technologies.",
-        image:       dreamProjectImg,
-        tags:        ["React", "AI", "Web Development"],
+        title:       "Media Local Storage Management",
+        description: "A web application that efficiently manages and organizes local media files.",
+        image:       "src/image/IMG-20251021-WA0067.jpg",
+        tags:        [ "Web Development", "html", "css", "js", "Python"],
         category:    "Full-Stack",
         accent:      "#5AA8D6",
         liveUrl:     "https://star-ai-lab.example.com",
         githubUrl:   "https://github.com/Nilanjan-Nayak",
         achievements: [
             "Implemented modern UI/UX principles",
-            "Integrated AI-driven features"
+            "Integrated backend services for media management"
         ],
         stats: {
             year: "2024",
@@ -367,9 +370,9 @@ export const projectsData: Project[] = [
     {
         title:       "Carrrerkick",
         description: "A comprehensive internship website designed to connect students with opportunities.",
-        image:       "/projects/ecommerce-platform.jpg",
-        tags:        ["HTML", "CSS", "JavaScript", "Web Design"],
-        category:    "Web Dev",
+        image:       "src/image/Screenshot_2024-11-10_181701-removebg-preview.png",
+        tags:        ["Web Development", "Internship Portal", "Full Stack","Group Project"],
+        category:    "Web Dev, Sofrtware Application",
         accent:      "#3066be",
         liveUrl:     "https://carrrerkick.example.com",
         githubUrl:   "https://github.com/Nilanjan-Nayak",
@@ -379,16 +382,16 @@ export const projectsData: Project[] = [
         ],
         stats: {
             year:    "2024",
-            status:  "Live",
+            status:  "In Progress",
             stars:   "12",
-            commits: "45",
-            views:   "1.2k"
+            commits: "3",
+            views:   "Trail Mode "
         }
     },
     {
-        title:       "Tata Data Visualization",
-        description: "Data visualization project for Tata Consultancy Services job simulation, providing business insights.",
-        image:       "/projects/project-management.jpg",
+        title:       "Star Assistant",
+        description: "An AI-powered personal assistant application to enhance your day.",
+        image:       "src/image/Screenshot 2025-07-19 212242.png",
         tags:        ["Data Visualization", "Analytics", "Business Intelligence"],
         category:    "Data Science",
         accent:      "#00bfff",
@@ -404,6 +407,27 @@ export const projectsData: Project[] = [
             stars: "5",
             commits: "10",
             views: "100"
+        }
+    },
+    {
+        title:       "Star Mobile Assistant",
+        description: "An AI-powered personal assistant application to enhance your day.",
+        image:       "src/image/Screenshot 2025-07-19 212242.png",
+        tags:        ["App Development", "Flutter", "AI Integration","API Integration"],
+        category:    "Data Science",
+        accent:      "#00bfff",
+        liveUrl:     "#",
+        githubUrl:   "https://github.com/Nilanjan-Nayak",
+        achievements: [
+            "Created effective visual insights",
+            " mobile app development"
+        ],
+        stats: {
+            year: "2024",
+            status: "In Progress",
+            stars: "5",
+            commits: "",
+            views: "Under Development"
         }
     },
 ];
